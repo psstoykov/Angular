@@ -10,9 +10,11 @@
 ## Markup
 
 -   [x] Create Nav Component
+-   [x] styles for nav component
 -   [ ] Create initial html mark-up
 -   [ ] Create initial css styles
 
 ## App setup
 
 -   [x] import provideHttpClient in app config
+-   [x] nav routerLink added
