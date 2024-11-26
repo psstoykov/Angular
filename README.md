@@ -5,6 +5,11 @@
 -   [x] Create angular App
 -   [x] clean initial html file
 -   [x] initialize header, footer and main components
+-   [x] add header and footer to the app component
+
+## Markup
+
+-   [x] Create Nav Component
 -   [ ] Create initial html mark-up
 -   [ ] Create initial css styles
 
