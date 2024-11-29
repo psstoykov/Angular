@@ -12,6 +12,9 @@
 -   [x] Create Nav Component
 -   [x] styles for nav component
 -   [ ] Create initial html mark-up
+
+## Styling
+
 -   [ ] Create initial css styles
 
 ## App setup
