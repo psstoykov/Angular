@@ -23,6 +23,7 @@
 -   [x] import provideHttpClient in app config
 -   [x] nav routerLink added
 -   [x] FormsModule and NgForm to Login
+-   [x] Firebase initial setup and deploy
 
 ## Components
 
