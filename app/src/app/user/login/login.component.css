@@ -1,0 +1,42 @@
+.container {
+  /* width: max-content; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+form,
+.toRegister {
+  background-color: white;
+  padding: 20px;
+}
+.toRegister {
+  padding: 10px 20px;
+}
+
+.register {
+  color: #2eb3f7;
+}
+
+input {
+  padding: 5px 10px;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 5px;
+  border: none !important;
+}
+
+h2 {
+  text-align: center;
+}
+button {
+  margin-top: 20px;
+  background-color: #2eb3f7;
+  border: none !important;
+  padding: 5px;
+  border-radius: 10px;
+}

@@ -1,0 +1,36 @@
+<div class="container">
+  <form class="login" #form="ngForm" (ngSubmit)="login(form)">
+    <h2>Login Form</h2>
+    <fieldset>
+      <label for="email"></label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="email"
+        ngModel
+        #inputEmail="ngModel"
+        required
+      />
+      <label for="password"></label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+        ngModel
+        #inputPassword="ngModel"
+        minlength="5"
+        required
+      />
+      <button>Log In</button>
+    </fieldset>
+  </form>
+
+  <div class="toRegister">
+    <p>
+      Don't have an account?
+      <a class="register" routerLink="/register">Register</a>
+    </p>
+  </div>
+</div>

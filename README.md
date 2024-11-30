@@ -15,9 +15,15 @@
 
 ## Styling
 
--   [ ] Create initial css styles
+-   [x] Create initial css styles
+-   [x] Added bootstrap library
 
 ## App setup
 
 -   [x] import provideHttpClient in app config
 -   [x] nav routerLink added
+-   [x] FormsModule and NgForm to Login
+
+## Components
+
+-   [x] Main, Header, Footer
