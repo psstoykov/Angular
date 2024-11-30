@@ -1,1 +1,47 @@
-<h1>register works!</h1>
+<div class="container">
+  <form class="register" #form="ngForm" (ngSubmit)="register(form)">
+    <h2>Register Form</h2>
+    <fieldset>
+      <label for="email"></label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="email"
+        ngModel
+        #inputEmail="ngModel"
+        required
+      />
+      <label for="password"></label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+        ngModel
+        #inputPassword="ngModel"
+        minlength="5"
+        required
+      />
+      <label for="repass"></label>
+      <input
+        type="password"
+        name="repass"
+        id="repass"
+        placeholder="repeat password"
+        ngModel
+        #inputPassword="ngModel"
+        minlength="5"
+        required
+      />
+      <button>Register</button>
+    </fieldset>
+  </form>
+
+  <div class="toLogin">
+    <p>
+      Already have an account?
+      <a class="login" routerLink="/login">Login</a>
+    </p>
+  </div>
+</div>
