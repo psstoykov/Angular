@@ -28,3 +28,12 @@
 ## Components
 
 -   [x] Main, Header, Footer
+
+## Api-Service
+
+-   [x] get all photographs
+-   [x] create photograph
+
+## User-Service
+
+## Error-handling
