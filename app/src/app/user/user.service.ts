@@ -5,14 +5,16 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from '@angular/fire/auth';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, pipe, Subscription, tap } from 'rxjs';
 import { userForAuth } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService implements OnDestroy {
+export class UserService {
   private user$$ = new BehaviorSubject<userForAuth | null>(null);
   private user$ = this.user$$.asObservable();
 
@@ -35,11 +37,12 @@ export class UserService implements OnDestroy {
       .then((userCredential) => {
         //Signed in
         const user = userCredential.user;
+        return user;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        console.error(errorMessage);
       });
   }
 
@@ -49,13 +52,25 @@ export class UserService implements OnDestroy {
         //Signed up
         const user = userCredential.user;
 
-        //  ...
-        console.log(user);
+        return user;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        console.error(errorMessage);
       });
+  }
+
+  logout() {
+    signOut(this.auth)
+      .then(() => {
+        //Sign-out successful
+      })
+      .catch((error) => {
+        //An error occured!
+      });
+  }
+  getUser() {
+    return onAuthStateChanged(this.auth, (user) => user);
   }
 }

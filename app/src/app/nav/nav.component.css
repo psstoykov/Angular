@@ -9,7 +9,7 @@ nav {
 }
 a {
   font-size: 2rem;
-  color: white;
+  color: white !important;
   padding: 10px;
   margin: 5px;
 }

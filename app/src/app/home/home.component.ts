@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
+import { UserService } from '../user/user.service';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -11,10 +11,9 @@ import { ApiService } from '../api.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
-
-  ngOnInit(): void {
-    const Posts = this.apiService.getAllPosts();
-  }
+export class HomeComponent {
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService
+  ) {}
 }

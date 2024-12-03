@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,4 +9,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })
-export class NavComponent {}
+export class NavComponent {
+  constructor(private userService: UserService, private router: Router) {}
+
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['login']);
+  }
+}

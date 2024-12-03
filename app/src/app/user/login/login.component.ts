@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { NgForm, FormsModule } from '@angular/forms';
 import { UserService } from '../user.service';
@@ -15,7 +15,6 @@ export class LoginComponent {
   constructor(private router: Router, private userService: UserService) {}
 
   login(form: NgForm) {
-    console.log('login');
     if (form.invalid) {
       console.error('Invalid Register form');
       form.reset();
