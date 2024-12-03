@@ -1,6 +1,10 @@
 <div class="container">
   <form class="register" #form="ngForm" (ngSubmit)="register(form)">
     <h2>Register Form</h2>
+
+    @if (errorMessage) {
+    <div>{{ errorMessage }}</div>
+    }
     <fieldset>
       <label for="email"></label>
       <input

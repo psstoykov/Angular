@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user/user.service';
+import { User } from '../types/user';
 
 @Component({
   selector: 'app-nav',
@@ -10,10 +11,10 @@ import { UserService } from '../user/user.service';
   styleUrl: './nav.component.css',
 })
 export class NavComponent {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private router: Router) {}
 
-  logout() {
+  userService = inject(UserService);
+  logout(): void {
     this.userService.logout();
-    this.router.navigate(['login']);
   }
 }

@@ -12,16 +12,16 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent {
   constructor(private router: Router, private userService: UserService) {}
-
+  errorMessage: string | null = null;
   register(form: NgForm) {
-    if (form.invalid) {
-      console.error('Invalid Register form');
-      form.reset();
-      return;
-    }
-
-    const { email, password } = form.value;
-    this.userService.register(email, password);
-    this.router.navigate(['/home']);
+    const { email, username, password } = form.value;
+    this.userService.register(email, username, password).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.errorMessage = err.code;
+      },
+    });
   }
 }

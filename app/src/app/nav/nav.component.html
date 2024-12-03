@@ -1,4 +1,14 @@
 <nav>
+  @if (userService.currentUserSignal() == null) {
+  <div class="nav-left">
+    <a routerLink="/home">Home</a>
+    <a routerLink="/gallery">Gallery</a>
+  </div>
+  <div class="nav-right">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  </div>
+  }@else {
   <div class="nav-left">
     <a routerLink="/home">Home</a>
     <a routerLink="/gallery">Gallery</a>
@@ -6,8 +16,7 @@
     <a routerLink="/create">Create</a>
   </div>
   <div class="nav-right">
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
     <a (click)="logout()">Logout</a>
   </div>
+  }
 </nav>

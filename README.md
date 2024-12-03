@@ -37,6 +37,9 @@
 
 ## User-Service
 
+-   [x] Functioning Register/Login/Logout
+
 ## Error-handling
 
 -   [] create error page to route to
+-   [] create error pages

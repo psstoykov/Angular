@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 
 import {
   getAuth,
@@ -7,70 +7,50 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  updateProfile,
+  user,
 } from '@angular/fire/auth';
-import { BehaviorSubject, pipe, Subscription, tap } from 'rxjs';
-import { userForAuth } from '../types/user';
+import { from, Observable } from 'rxjs';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private user$$ = new BehaviorSubject<userForAuth | null>(null);
-  private user$ = this.user$$.asObservable();
+  constructor() {}
 
-  USER_KEY = '[user]';
-  user: userForAuth | null = null;
-  userSubscription: Subscription | null = null;
+  firebaseAuth = inject(Auth);
+  user$ = user(this.firebaseAuth);
+  //signal for current user
+  currentUserSignal = signal<User | null | undefined>(undefined);
 
-  get isLogged(): boolean {
-    return !!this.user;
-  }
-
-  constructor(private auth: Auth) {
-    this.userSubscription = this.user$.subscribe((user) => {
-      this.user = user;
+  register(
+    email: string,
+    username: string,
+    password: string
+  ): Observable<void> {
+    const promise = createUserWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    ).then((response) => {
+      updateProfile(response.user, { displayName: username });
     });
+    return from(promise);
   }
 
-  login(email: string, password: string) {
-    return signInWithEmailAndPassword(this.auth, email, password)
-      .then((userCredential) => {
-        //Signed in
-        const user = userCredential.user;
-        return user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorMessage);
-      });
+  login(email: string, password: string): Observable<void> {
+    const promise = signInWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+      //returns UserCredential, therefore resolving to empty function
+    ).then(() => {});
+    return from(promise);
   }
 
-  register(email: string, password: string) {
-    createUserWithEmailAndPassword(this.auth, email, password)
-      .then((userCredential) => {
-        //Signed up
-        const user = userCredential.user;
-
-        return user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorMessage);
-      });
-  }
-
-  logout() {
-    signOut(this.auth)
-      .then(() => {
-        //Sign-out successful
-      })
-      .catch((error) => {
-        //An error occured!
-      });
-  }
-  getUser() {
-    return onAuthStateChanged(this.auth, (user) => user);
+  logout(): Observable<void> {
+    const promise = signOut(this.firebaseAuth);
+    return from(promise);
   }
 }
