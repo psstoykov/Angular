@@ -5,6 +5,6 @@ export interface Post {
   title: string;
   url: string;
   description: string;
-  createdAt: string;
+  currentDate: { seconds: number; nanoseconds: number };
   ownerId: string;
 }

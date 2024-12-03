@@ -16,5 +16,6 @@ export class NavComponent {
   userService = inject(UserService);
   logout(): void {
     this.userService.logout();
+    this.router.navigate(['/home']);
   }
 }

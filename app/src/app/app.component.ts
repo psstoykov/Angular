@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { UserService } from './user/user.service';
-import { user } from '@angular/fire/auth';
+
 import { User } from './types/user';
 
 @Component({
@@ -18,16 +18,18 @@ export class AppComponent implements OnInit {
   userService = inject(UserService);
 
   ngOnInit(): void {
-    this.userService.user$.subscribe((user: any) => {
-      if (user) {
-        this.userService.currentUserSignal.set({
-          email: user.email!,
-          username: user.displayName!,
-        });
-      } else {
-        this.userService.currentUserSignal.set(null);
+    this.userService.user$.subscribe(
+      (user: { email: string; displayName: string }) => {
+        if (user) {
+          this.userService.currentUserSignal.set({
+            email: user.email!,
+            username: user.displayName!,
+          });
+          console.log(this.userService.currentUserSignal());
+        } else {
+          this.userService.currentUserSignal.set(null);
+        }
       }
-      console.log(this.userService.currentUserSignal());
-    });
+    );
   }
 }

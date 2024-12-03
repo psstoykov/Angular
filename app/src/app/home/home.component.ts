@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { UserService } from '../user/user.service';
 import { ApiService } from '../api.service';
+import { Post } from '../types/posts';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,15 @@ import { ApiService } from '../api.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {
-  constructor(
-    private apiService: ApiService,
-    private userService: UserService
-  ) {}
+export class HomeComponent implements OnInit {
+  posts: Post[] = [];
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {
+    const posts = this.apiService.getAllPosts().forEach((snapshot) => {
+      snapshot.forEach((doc) => {
+        console.log(doc.data());
+      });
+    });
+  }
 }
