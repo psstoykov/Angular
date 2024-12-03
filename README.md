@@ -32,7 +32,8 @@
 ## Api-Service
 
 -   [x] get all photographs
--   [x] create photograph
+-   [/] create photograph
+-   [x] get photograph by id
 
 ## User-Service
 

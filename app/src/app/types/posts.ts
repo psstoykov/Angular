@@ -1,8 +1,7 @@
+import { Comment } from './comment';
+
 export interface Post {
-  comments?: {
-    text: string;
-    ownerId: string;
-  };
+  comments?: Comment[];
   title: string;
   url: string;
   description: string;

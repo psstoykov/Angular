@@ -1,8 +1,10 @@
 nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: black;
   opacity: 0.8;
+  gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 a {
@@ -18,13 +20,15 @@ a:hover {
 }
 
 .nav-left {
-  width: 50%;
+  width: 50%-10px;
   display: flex;
   justify-content: space-around;
+  gap: 5px;
 }
 
 .nav-right {
-  width: 50%;
+  width: 50%-10px;
   display: flex;
   justify-content: space-around;
+  gap: 5px;
 }

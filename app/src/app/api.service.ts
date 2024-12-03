@@ -7,10 +7,8 @@ import {
   getDoc,
   getDocs,
   query,
-  setDoc,
   where,
 } from '@angular/fire/firestore';
-import { User } from './types/user';
 import { Post } from './types/posts';
 
 @Injectable({
@@ -23,6 +21,7 @@ export class ApiService {
   createPost(post: Post) {
     addDoc(collection(this.firestore, 'photographs'), post).then((docRef) => {
       console.log('Document written with ID: ', docRef.id);
+      return docRef;
     });
   }
 
@@ -40,9 +39,20 @@ export class ApiService {
         console.log(error);
       });
   }
-  //Get latest posts
-
   //Get Post by Id
+
+  getPostById(id: string) {
+    const docRef = doc(this.firestore, 'photographs', id);
+    getDoc(docRef)
+      .then((docSnap) => {
+        console.log('Document data: ', docSnap.data());
+        return docSnap.data();
+      })
+      .catch((error) => {
+        console.log('No such document');
+      });
+  }
+  //Get latest posts
 
   //Edit post
 
