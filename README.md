@@ -43,3 +43,7 @@
 
 -   [] create error page to route to
 -   [] create error pages
+
+## Guards
+
+-   [x] Can-activate function in auth-guard service

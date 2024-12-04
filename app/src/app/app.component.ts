@@ -5,8 +5,6 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { UserService } from './user/user.service';
 
-import { User } from './types/user';
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,7 +13,7 @@ import { User } from './types/user';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  userService = inject(UserService);
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.user$.subscribe(

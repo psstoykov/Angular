@@ -4,7 +4,6 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {
   initializeApp as initializeApp_alias,
@@ -14,11 +13,10 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment.development';
-import { appInterceptor } from './app.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([appInterceptor])),
+    provideHttpClient(withInterceptors([])),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     //Firebase
