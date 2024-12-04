@@ -1,11 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
 
 import {
-  getAuth,
   Auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut,
   updateProfile,
   user,
@@ -34,8 +32,11 @@ export class UserService {
       email,
       password
     ).then((response) => {
+      //update display name in user profile
+      //more update options available
       updateProfile(response.user, { displayName: username });
     });
+    //convert to observable
     return from(promise);
   }
 
@@ -46,11 +47,13 @@ export class UserService {
       password
       //returns UserCredential, therefore resolving to empty function
     ).then(() => {});
+    //convert to observable
     return from(promise);
   }
 
   logout(): Observable<void> {
     const promise = signOut(this.firebaseAuth);
+    //convert to observable
     return from(promise);
   }
 }

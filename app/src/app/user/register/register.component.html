@@ -1,6 +1,6 @@
 <div class="container">
   <form class="register" #form="ngForm" (ngSubmit)="register(form)">
-    <h2>Register Form</h2>
+    <h2>Register</h2>
 
     @if (errorMessage) {
     <div>{{ errorMessage }}</div>
@@ -11,7 +11,7 @@
         type="email"
         name="email"
         id="email"
-        placeholder="email"
+        placeholder="email@domain.com"
         ngModel
         #inputEmail="ngModel"
         required
@@ -31,7 +31,7 @@
         type="password"
         name="password"
         id="password"
-        placeholder="password"
+        placeholder="*****"
         ngModel
         #inputPassword="ngModel"
         minlength="5"
@@ -42,7 +42,7 @@
         type="password"
         name="repass"
         id="repass"
-        placeholder="repeat password"
+        placeholder="*****"
         ngModel
         #inputPassword="ngModel"
         minlength="5"

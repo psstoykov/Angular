@@ -13,10 +13,12 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  //Create
+  //Create page
   {
     path: 'create',
     component: CreateComponent,
     canActivate: [AuthGuardService],
   },
+  //redirect any random url back to home page
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

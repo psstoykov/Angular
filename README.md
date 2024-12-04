@@ -47,3 +47,8 @@
 ## Guards
 
 -   [x] Can-activate function in auth-guard service
+
+## DataBase
+
+-   [x] read data from database
+-   [x] display data on the template

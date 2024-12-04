@@ -25,16 +25,15 @@ export class ApiService {
   // create a new document in collection "photographs"
 
   createPost(post: Post) {
-    addDoc(collection(this.firestore, 'photographs'), post).then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-      return docRef;
-    });
+    const promise = addDoc(collection(this.firestore, 'photographs'), post);
+    promise.then(() => {});
+    return from(promise);
   }
 
   //Get all posts
   getAllPosts() {
     const promise = getDocs(collection(this.firestore, 'photographs'));
-    return from(promise);
+    return from(promise); //converts to observable
   }
   //Get Post by Id
 

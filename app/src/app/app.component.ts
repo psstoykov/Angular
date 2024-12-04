@@ -14,7 +14,6 @@ import { UserService } from './user/user.service';
 })
 export class AppComponent implements OnInit {
   constructor(private userService: UserService) {}
-
   ngOnInit(): void {
     this.userService.user$.subscribe(
       (user: { email: string; displayName: string }) => {

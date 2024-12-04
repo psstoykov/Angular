@@ -1,10 +1,11 @@
+import { Timestamp } from '@angular/fire/firestore';
 import { Comment } from './comment';
 
 export interface Post {
   comments?: Comment[];
   title: string;
-  url: string;
+  imageUrl: string;
   description: string;
-  currentDate: { seconds: number; nanoseconds: number };
+  createdAt: Date;
   ownerId: string;
 }
