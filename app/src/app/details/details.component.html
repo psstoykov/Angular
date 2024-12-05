@@ -5,7 +5,7 @@
   <div class="left">
     <h2>{{ post.title }}</h2>
     <div class="frame"><img [src]="post.imageUrl" /></div>
-
+    <p class="postedBy">Posted by: {{ post.ownerUsername }}</p>
     @if(isOwner){
 
     <div class="menubar">
@@ -39,8 +39,8 @@
         @for (comment of comments; track $index){
         <div class="comment-li">
           <li>{{ comment.text }}</li>
-          by
-          <span>{{ comment.username }}</span>
+          <!-- upperCasePipe -->
+          <span>{{ comment.username | uppercase }} </span>
         </div>
         }
       </ul>

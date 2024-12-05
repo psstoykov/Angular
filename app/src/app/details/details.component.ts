@@ -3,17 +3,15 @@ import { ApiService } from '../api.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Post } from '../types/posts';
 import { FormsModule, NgForm } from '@angular/forms';
-import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
 import { UserService } from '../user/user.service';
-import { User } from '../types/user';
 import { LoaderComponent } from '../loader/loader.component';
-import { from } from 'rxjs';
 import { Comment } from '../types/comment';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, FormsModule, LoaderComponent],
+  imports: [RouterLink, FormsModule, LoaderComponent, UpperCasePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -28,7 +26,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    public userService: UserService
+    public userService: UserService,
+    private router: Router
   ) {}
 
   get isOwner(): boolean {
@@ -40,12 +39,13 @@ export class DetailsComponent implements OnInit {
   }
 
   deletePost(id: string) {
-    console.log(id);
+    this.apiService.deletePost(id);
+    this.router.navigate(['/gallery']);
   }
   comment(form: NgForm) {
-    const { text } = form.value; //comment value
-    const userId = this.userService.currentUserSignal()?.uid; //userId
-    const date = new Date(); //date
+    const { text } = form.value;
+    const userId = this.userService.currentUserSignal()?.uid;
+    const date = new Date();
     const username = this.userService.currentUserSignal()?.username;
     if (form.invalid) {
       console.log('Invalid Comment');

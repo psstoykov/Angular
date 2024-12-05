@@ -24,7 +24,7 @@ a:hover {
   width: 50%-10px;
   display: flex;
   justify-content: space-around;
-  gap: 5px;
+  gap: 15px;
 }
 
 .nav-right {

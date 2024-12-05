@@ -3,6 +3,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { Auth } from '@angular/fire/auth';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-create',
@@ -29,13 +30,14 @@ export class CreateComponent {
 
     //get userId
     const ownerId = this.auth.currentUser?.uid!;
-
+    const ownerUsername = this.auth.currentUser?.displayName;
     this.apiService.createPost({
       title,
       imageUrl,
       description,
       createdAt,
       ownerId,
+      ownerUsername: ownerUsername!,
     });
     this.router.navigate(['/gallery']);
   }

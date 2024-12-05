@@ -34,7 +34,7 @@ h2 {
   /* flex-wrap: wrap; */
   padding: 30px;
   gap: 20px;
-  /* height: 2000px; */
+  height: max-content;
 }
 .comment-box input {
   height: max-content;
@@ -43,6 +43,7 @@ h2 {
   height: 300px;
   overflow: scroll;
 }
+
 fieldset {
   display: flex;
   gap: 30px;
@@ -61,6 +62,7 @@ button:hover {
 }
 textarea {
   padding: 5px;
+  width: 70%;
 }
 a {
   font-size: 2rem;
@@ -96,6 +98,10 @@ span {
   flex-basis: 30%;
   /* font-size: 1.5rem; */
   color: green;
+}
+
+.postedBy {
+  font-size: 1.2rem;
 }
 .left {
   display: flex;

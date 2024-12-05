@@ -3,6 +3,7 @@ import {
   Firestore,
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -70,4 +71,8 @@ export class ApiService {
   //Edit post
 
   //Delete post
+
+  async deletePost(id: string) {
+    await deleteDoc(doc(this.firestore, 'photographs', id));
+  }
 }

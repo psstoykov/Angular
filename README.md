@@ -4,6 +4,8 @@
 
 -   Angular app with firebase backend
 -   public page: https://angular-77bd6.web.app/
+-   all collections except users handled by the firestore cloud db
+-   users collection and auth pipeline handled by the official firebase api
 
 ## How to run locally
 
@@ -11,6 +13,14 @@
 -   run npm install in terminal
 -   run ng serve in terminal
 -   app runnig on http://localhost:4200/
+
+## App functinality
+
+-   public part, where users can access Login, Register, Home and Gallery
+-   public part can access post details and read available comments
+-   users with an account can create their own posts
+-   users with an account can comment on any post.
+-   users with an accound can edit and delete their own posts
 
 ## Initialize Angular App
 
@@ -46,6 +56,9 @@
 -   [x] get all photographs
 -   [x] create photograph
 -   [x] get photograph by id
+-   [/] edit page
+-   [x] delete post
+-   [ ] my Page
 
 ## User-Service
 

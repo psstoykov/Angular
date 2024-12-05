@@ -8,5 +8,6 @@ export interface Post {
   description: string;
   createdAt: Date;
   ownerId: string;
+  ownerUsername: string;
   id?: string;
 }
