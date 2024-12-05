@@ -1,11 +1,13 @@
 .container {
   background-color: rgb(236, 236, 236);
+  padding: 0;
+  width: 100%;
+  /* margin: 0; */
 }
 .main {
-  margin: auto;
+  margin: 30px;
 
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  margin-top: 100px;
 }

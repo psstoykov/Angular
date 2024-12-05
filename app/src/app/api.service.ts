@@ -51,17 +51,11 @@ export class ApiService {
   }
   //Get Post by Id
 
-  // getPostById(id: string) {
-  //   const docRef = doc(this.firestore, 'photographs', id);
-  //   getDoc(docRef)
-  //     .then((docSnap) => {
-  //       console.log('Document data: ', docSnap.data());
-  //       return docSnap.data();
-  //     })
-  //     .catch((error) => {
-  //       console.log('No such document');
-  //     });
-  // }
+  getPostById(id: string) {
+    const postRef = doc(this.firestore, 'photographs', id);
+    const promise = getDoc(postRef);
+    return from(promise);
+  }
   //Get latest posts
 
   //Edit post
