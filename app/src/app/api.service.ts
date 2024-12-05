@@ -7,6 +7,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
   query,
   updateDoc,
   where,
@@ -54,9 +55,11 @@ export class ApiService {
   //Get Comments
 
   async getComments(postId: string) {
-    const promise = await getDocs(
-      collection(this.firestore, 'photographs', postId, 'comments')
+    const q = query(
+      collection(this.firestore, 'photographs', postId, 'comments'),
+      orderBy('createdAt', 'desc')
     );
+    const promise = getDocs(q);
     return promise;
   }
   //Get Post by Id

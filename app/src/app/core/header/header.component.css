@@ -1,10 +1,12 @@
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   padding: 10px;
   text-align: center;
-  opacity: 0.8;
+
+  color: #c13584;
 }
 p {
   font-size: 2rem;
   padding-left: 10px;
+  color: #e1306c;
 }

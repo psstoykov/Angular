@@ -36,7 +36,7 @@
       }
       <h3>Comments</h3>
       <ul class="comments">
-        @for (comment of comments; track $index){
+        @for (comment of commentSignal(); track $index){
         <div class="comment-li">
           <li>{{ comment.text }}</li>
           <!-- upperCasePipe -->

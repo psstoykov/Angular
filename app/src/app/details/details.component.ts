@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, Signal } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Post } from '../types/posts';
@@ -16,12 +16,13 @@ import { UpperCasePipe } from '@angular/common';
   styleUrl: './details.component.css',
 })
 export class DetailsComponent implements OnInit {
+  commentSignal = signal<Comment[]>([]);
+  commentArr: Comment[] = [];
   isLoading = true;
   photograph: Post[] = [];
-  comments: Comment[] = [];
 
   //TODO userId is lost when page reloads
-  userId: string = '';
+
   postId: string = '';
   constructor(
     private apiService: ApiService,
@@ -31,7 +32,9 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   get isOwner(): boolean {
-    if (this.userId === this.photograph[0].ownerId) {
+    if (
+      this.userService.currentUserSignal()?.uid === this.photograph[0].ownerId
+    ) {
       return true;
     } else {
       return false;
@@ -42,6 +45,7 @@ export class DetailsComponent implements OnInit {
     this.apiService.deletePost(id);
     this.router.navigate(['/gallery']);
   }
+
   comment(form: NgForm) {
     const { text } = form.value;
     const userId = this.userService.currentUserSignal()?.uid;
@@ -49,7 +53,6 @@ export class DetailsComponent implements OnInit {
     const username = this.userService.currentUserSignal()?.username;
     if (form.invalid) {
       console.log('Invalid Comment');
-
       return;
     }
 
@@ -57,19 +60,31 @@ export class DetailsComponent implements OnInit {
       { text, createdAt: date, ownerId: userId!, username: username! },
       this.postId
     );
-    //TODO update component when comment is added
+
+    //TODO update signal when comment is added
+    this.commentArr.unshift({
+      text,
+      createdAt: date,
+      ownerId: userId!,
+      username: username!,
+    });
+    this.commentSignal.set(this.commentArr);
+
     form.reset();
-    return;
   }
 
   ngOnInit() {
     this.postId = this.activatedRoute.snapshot.params['postId'];
+
     const ob = this.apiService.getComments(this.postId);
     ob.then((rec) => {
       rec.forEach((comment) => {
         const result = comment.data() as Comment;
-        this.comments.push(result);
+
+        //Set Comment signal here
+        this.commentArr.push(result);
       });
+      this.commentSignal.set(this.commentArr);
     });
     this.userService.user$.subscribe(() => {
       this.isLoading = false;
@@ -81,8 +96,6 @@ export class DetailsComponent implements OnInit {
 
       this.photograph.push(post);
     });
-
-    this.userId = this.userService.currentUserSignal()?.uid!; //TODO why I'm loosing the userId(it arrives too late)
 
     this.isLoading = false;
   }
