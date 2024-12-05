@@ -5,6 +5,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { UserService } from './user/user.service';
 import { LoaderComponent } from './loader/loader.component';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -14,14 +15,15 @@ import { LoaderComponent } from './loader/loader.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private auth: Auth) {}
   ngOnInit(): void {
     this.userService.user$.subscribe(
-      (user: { email: string; displayName: string }) => {
+      (user: { email: string; displayName: string; uid: string }) => {
         if (user) {
           this.userService.currentUserSignal.set({
             email: user.email!,
             username: user.displayName!,
+            uid: this.auth.currentUser?.uid,
           });
           console.log(this.userService.currentUserSignal());
         } else {

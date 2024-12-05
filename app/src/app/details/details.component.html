@@ -1,15 +1,43 @@
-@for (post of photograph;track $index){
+@if(isLoading){
+<app-loader />
+}@else { @for (post of photograph;track $index){
 <div class="container">
   <div class="left">
+    <h2>{{ post.title }}</h2>
     <div class="frame"><img [src]="post.imageUrl" /></div>
+
+    @if(userId === post.ownerId){
+
     <div class="menubar">
-      <a routerLink="comment">Comment</a>
       <a routerLink="edit">Edit</a>
       <a routerLink="delete">Delete</a>
     </div>
-    <ul class="comments">
-      <li>first comment</li>
-    </ul>
+    }
+
+    <div class="comment-box">
+      <!-- TODO comments box -->
+      @if (userService.currentUserSignal() !== null){
+      <form class="create" #form="ngForm" (ngSubmit)="comment(form)">
+        <fieldset>
+          <label for="text"></label>
+          <textarea
+            type="text"
+            name="text"
+            id="text"
+            placeholder="comment here"
+            ngModel
+            #inputEmail="ngModel"
+            required
+          ></textarea>
+          <button>Comment</button>
+        </fieldset>
+      </form>
+      }
+      <ul class="comments">
+        <h3>Comments</h3>
+        <li>first comment</li>
+      </ul>
+    </div>
   </div>
   <div class="right">
     <h2>Description:</h2>
@@ -19,4 +47,4 @@
   </div>
   <!-- //TODO add dynamic comments -->
 </div>
-}
+} }

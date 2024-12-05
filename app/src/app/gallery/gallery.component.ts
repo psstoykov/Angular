@@ -2,14 +2,12 @@ import { Component, input, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Post } from '../types/posts';
 import { RouterLink } from '@angular/router';
-import { DetailsComponent } from '../details/details.component';
 import { Auth } from '@angular/fire/auth';
-import { doc, updateDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [RouterLink, DetailsComponent],
+  imports: [RouterLink],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.css',
 })

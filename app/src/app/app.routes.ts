@@ -30,22 +30,21 @@ export const routes: Routes = [
     path: 'gallery',
     component: GalleryComponent,
   },
+  {
+    path: 'gallery/:postId',
+
+    component: DetailsComponent,
+  },
   //Create page
   {
     path: 'create',
     component: CreateComponent,
     canActivate: [AuthGuardService],
   },
-  {
-    path: 'gallery/:postId',
 
-    component: DetailsComponent,
-    children: [
-      {
-        path: 'edit',
-        component: EditComponent,
-      },
-    ],
+  {
+    path: 'gallery/:postId/edit',
+    component: EditComponent,
   },
 
   //redirect any random url back to home page

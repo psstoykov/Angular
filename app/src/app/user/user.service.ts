@@ -7,6 +7,7 @@ import {
   signOut,
   updateProfile,
   user,
+  getAuth,
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { User } from '../types/user';
@@ -16,11 +17,19 @@ import { User } from '../types/user';
 })
 export class UserService {
   constructor() {}
-
+  auth = inject(Auth);
+  getUserId() {
+    const user = this.auth.currentUser;
+    if (user !== null) {
+      return user.uid;
+    }
+    return null;
+  }
   firebaseAuth = inject(Auth);
   user$ = user(this.firebaseAuth);
   //signal for current user
   currentUserSignal = signal<User | null | undefined>(undefined);
+  userId$ = this.currentUserSignal()?.uid!;
 
   register(
     email: string,
