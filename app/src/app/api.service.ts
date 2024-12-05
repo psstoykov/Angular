@@ -49,6 +49,15 @@ export class ApiService {
     );
     await addDoc(commentsRef, comment);
   }
+
+  //Get Comments
+
+  async getComments(postId: string) {
+    const promise = await getDocs(
+      collection(this.firestore, 'photographs', postId, 'comments')
+    );
+    return promise;
+  }
   //Get Post by Id
 
   getPostById(id: string) {

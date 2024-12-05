@@ -6,11 +6,11 @@
     <h2>{{ post.title }}</h2>
     <div class="frame"><img [src]="post.imageUrl" /></div>
 
-    @if(userId === post.ownerId){
+    @if(isOwner){
 
     <div class="menubar">
       <a routerLink="edit">Edit</a>
-      <a routerLink="delete">Delete</a>
+      <a class="delete" (click)="deletePost(postId)">Delete</a>
     </div>
     }
 
@@ -27,15 +27,22 @@
             placeholder="comment here"
             ngModel
             #inputEmail="ngModel"
+            minlength="3"
             required
           ></textarea>
           <button>Comment</button>
         </fieldset>
       </form>
       }
+      <h3>Comments</h3>
       <ul class="comments">
-        <h3>Comments</h3>
-        <li>first comment</li>
+        @for (comment of comments; track $index){
+        <div class="comment-li">
+          <li>{{ comment.text }}</li>
+          by
+          <span>{{ comment.username }}</span>
+        </div>
+        }
       </ul>
     </div>
   </div>

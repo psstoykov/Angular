@@ -1,5 +1,17 @@
 # Angular Project Defense
 
+## Project info
+
+-   Angular app with firebase backend
+-   public page: https://angular-77bd6.web.app/
+
+## How to run locally
+
+-   clone github repository
+-   run npm install in terminal
+-   run ng serve in terminal
+-   app runnig on http://localhost:4200/
+
 ## Initialize Angular App
 
 -   [x] Create angular App
@@ -11,7 +23,7 @@
 
 -   [x] Create Nav Component
 -   [x] styles for nav component
--   [ ] Create initial html mark-up
+-   [x] Create initial html mark-up
 
 ## Styling
 
@@ -32,7 +44,7 @@
 ## Api-Service
 
 -   [x] get all photographs
--   [/] create photograph
+-   [x] create photograph
 -   [x] get photograph by id
 
 ## User-Service
@@ -41,7 +53,7 @@
 
 ## Error-handling
 
--   [] create error page to route to
+-   [x] create error page to route to
 -   [] create error pages
 
 ## Guards

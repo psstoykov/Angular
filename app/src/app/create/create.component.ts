@@ -37,6 +37,6 @@ export class CreateComponent {
       createdAt,
       ownerId,
     });
-    this.router.navigate(['/home']);
+    this.router.navigate(['/gallery']);
   }
 }

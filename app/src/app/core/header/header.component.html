@@ -1,2 +1,10 @@
-<h1><a href="/home">PhotoBooth</a></h1>
+<div class="title">
+  <h1><a href="/home">PhotoBooth</a></h1>
+  @if (username) {
+
+  <p>Welcome, {{ username }}</p>
+  }@else {
+  <p>Welcome, guest</p>
+  }
+</div>
 <app-nav />
