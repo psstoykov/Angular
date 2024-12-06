@@ -1,10 +1,70 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  text-align: center;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
 }
+.userInfo {
+  border: 2px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
 fieldset {
   display: flex;
+  gap: 20px;
+}
+input {
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 5px;
+  border-radius: 10px;
+}
+button {
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: start;
+  border: 2px solid black;
+  padding: 40px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+.picture-frame {
+  flex-grow: 1;
+  max-width: fit-content;
+  border: 3px solid black;
+  padding: 20px;
+  background-color: white;
+  width: 30%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+  /* justify-content: center; */
+}
+.picture {
+  margin: auto;
+}
+img {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+}
+
+h2 {
+  align-self: center;
 }

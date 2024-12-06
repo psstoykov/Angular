@@ -52,6 +52,15 @@ export const routes: Routes = [
     path: 'myPage',
     component: MyPageComponent,
   },
+  // {
+  //   path: 'myPage/:pageId',
+  //   component: MyPostDetailsComponent,
+  // },
+  {
+    path: 'myPage/:pageId',
+    redirectTo: '/gallery/:pageId',
+    pathMatch: 'full',
+  },
   //redirect any random url back to home page
   { path: '**', component: NotFoundComponent },
 ];

@@ -42,6 +42,15 @@ export class ApiService {
     return from(promise); //converts to observable
   }
 
+  getMyPosts(uid: string) {
+    const q = query(
+      collection(this.firestore, 'photographs'),
+      where('ownerId', '==', uid)
+    );
+    const promise = getDocs(q);
+    return from(promise);
+  }
+
   async addComment(comment: Comment, id: string) {
     const commentsRef = collection(
       this.firestore,

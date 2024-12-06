@@ -6,12 +6,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../user/user.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { Comment } from '../types/comment';
-import { UpperCasePipe } from '@angular/common';
+import { DatePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, FormsModule, LoaderComponent, UpperCasePipe],
+  imports: [RouterLink, FormsModule, LoaderComponent, UpperCasePipe, DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -23,6 +23,10 @@ export class DetailsComponent implements OnInit {
 
   //TODO userId is lost when page reloads
 
+  get createdAt() {
+    const date = new Date();
+    return date;
+  }
   postId: string = '';
   constructor(
     private apiService: ApiService,
