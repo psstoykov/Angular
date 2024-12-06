@@ -29,13 +29,14 @@ export class GalleryComponent implements OnInit {
   constructor(private apiService: ApiService, private firestore: Auth) {}
   searchFunc(event: Event) {
     this.sq.set((event.target as HTMLInputElement).value);
-    //create filtered array
+    // create filtered array
     this.result = this.posts().filter(
       (post) =>
-        post.title.includes(this.sq()) ||
-        post.description.includes(this.sq()) ||
-        post.ownerUsername.includes(this.sq())
+        post.title.toLowerCase().includes(this.sq().toLowerCase()) ||
+        post.description.toLowerCase().includes(this.sq().toLowerCase()) ||
+        post.ownerUsername.toLowerCase().includes(this.sq().toLowerCase())
     );
+    for (let i = 0; i < this.posts().length; i++) {}
     console.log(this.sq());
   }
   ngOnInit() {
