@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
   Firestore,
+  OrderByDirection,
   addDoc,
   collection,
   deleteDoc,
   doc,
   getDoc,
   getDocs,
+  limit,
   orderBy,
   query,
   updateDoc,
@@ -36,16 +38,30 @@ export class ApiService {
   }
 
   //Get all posts
-  getAllPosts() {
-    const promise = getDocs(collection(this.firestore, 'photographs'));
-
-    return from(promise); //converts to observable
+  //sort by which criteria and which order
+  getAllPosts(sortBy: string, order: OrderByDirection) {
+    const q = query(
+      collection(this.firestore, 'photographs'),
+      orderBy(sortBy, order)
+    );
+    const promise = getDocs(q);
+    return from(promise);
   }
 
   getMyPosts(uid: string) {
     const q = query(
       collection(this.firestore, 'photographs'),
       where('ownerId', '==', uid)
+    );
+    const promise = getDocs(q);
+    return from(promise);
+  }
+
+  getLatestPosts() {
+    const q = query(
+      collection(this.firestore, 'photographs'),
+      orderBy('createdAt', 'desc'),
+      limit(3)
     );
     const promise = getDocs(q);
     return from(promise);

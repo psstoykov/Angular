@@ -15,18 +15,12 @@ export class RegisterComponent {
   errorMessage: string | null = null;
   register(form: NgForm) {
     const { email, username, password, repass } = form.value;
-    if (password != repass) {
-      this.errorMessage = 'Passwords must match';
-      return;
-    }
-    if (username.length < 3) {
-      this.errorMessage = 'username must be at least 3 characters';
-      return;
-    }
+
     this.userService
       .register(email.trim(), username.trim(), password.trim())
       .subscribe({
         next: () => {
+          this.userService.currentUserSignal.set(username);
           this.router.navigate(['/home']);
         },
         error: (err) => {

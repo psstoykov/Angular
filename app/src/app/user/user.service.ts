@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  updatePassword,
   user,
   getAuth,
   onAuthStateChanged,
@@ -86,6 +87,18 @@ export class UserService {
       })
       .catch((error) => {
         return error;
+      });
+  }
+
+  updatePassword(newPass: string) {
+    const user = getAuth().currentUser;
+
+    updatePassword(user!, newPass)
+      .then(() => {
+        return 'Password successfully updated!';
+      })
+      .catch((error) => {
+        return 'An error ocurred';
       });
   }
 }

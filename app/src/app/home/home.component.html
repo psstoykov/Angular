@@ -1,6 +1,27 @@
 <div class="container">
-  <img
-    src="https://img.freepik.com/premium-photo/green-field-sunset-natural-landscape-background_449849-6761.jpg"
-  />
-  <h1>Welcome to the Photo Booth</h1>
+  <div class="banner">
+    <h1>Welcome to the Photo Booth</h1>
+    <img
+      class="banner-photo"
+      src="https://img.freepik.com/premium-photo/green-field-sunset-natural-landscape-background_449849-6761.jpg"
+    />
+  </div>
+
+  <div class="latest">
+    <h2>Latest Posts</h2>
+    <div class="picture-container">
+      @for (post of posts();track $index){
+
+      <div class="picture-frame">
+        <a [routerLink]="post.id" routerLinkActive="router-link-active">
+          <img class="latest-photo" [src]="post.imageUrl" />
+        </a>
+        <div class="info-box">
+          <div class="title">{{ post.title }}</div>
+          <div class="author">by: {{ post.ownerUsername }}</div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
 </div>

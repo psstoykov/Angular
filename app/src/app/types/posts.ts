@@ -10,4 +10,5 @@ export interface Post {
   ownerId: string;
   ownerUsername: string;
   id?: string;
+  commentCount?: number;
 }

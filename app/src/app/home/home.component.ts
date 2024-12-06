@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../api.service';
 
-import { JsonPipe } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
+import { Post } from '../types/posts';
 
 @Component({
   selector: 'app-home',
   providers: [ApiService],
   standalone: true,
-  imports: [RouterLink, JsonPipe],
+  imports: [RouterLink, JsonPipe, DatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  posts = signal<Post[]>([]);
+
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    const obs = this.apiService.getLatestPosts();
+    obs.subscribe((data) => {
+      data.forEach((doc) => {
+        const result = doc.data() as Post;
+
+        this.posts.update((prev) => [...prev, result]);
+      });
+    });
+  }
+}

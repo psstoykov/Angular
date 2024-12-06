@@ -46,11 +46,13 @@ export const routes: Routes = [
   {
     path: 'gallery/:pageId/edit',
     component: EditComponent,
+    canActivate: [AuthGuardService],
   },
   //my  Page
   {
     path: 'myPage',
     component: MyPageComponent,
+    canActivate: [AuthGuardService],
   },
   // {
   //   path: 'myPage/:pageId',

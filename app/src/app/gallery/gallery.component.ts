@@ -24,31 +24,78 @@ export class GalleryComponent implements OnInit {
   result: Post[] = [];
   sq = signal<string>('');
 
-  postId = input.required<string>(); //input signal for dynamic routing >>>postId is url param
+  // postId = input.required<string>(); //input signal for dynamic routing >>>postId is url param
 
   constructor(private apiService: ApiService, private firestore: Auth) {}
   searchFunc(event: Event) {
+    this.posts.set(this.result);
     this.sq.set((event.target as HTMLInputElement).value);
-    // create filtered array
-    this.result = this.posts().filter(
-      (post) =>
-        post.title.toLowerCase().includes(this.sq().toLowerCase()) ||
-        post.description.toLowerCase().includes(this.sq().toLowerCase()) ||
-        post.ownerUsername.toLowerCase().includes(this.sq().toLowerCase())
+
+    this.posts.set(
+      this.posts().filter(
+        (post) =>
+          post.title.toLowerCase().includes(this.sq().toLowerCase()) ||
+          post.description.toLowerCase().includes(this.sq().toLowerCase()) ||
+          post.ownerUsername.toLowerCase().includes(this.sq().toLowerCase())
+      )
     );
-    for (let i = 0; i < this.posts().length; i++) {}
   }
-  ngOnInit() {
-    const obs = this.apiService.getAllPosts();
+
+  sortByUser() {
+    this.result = [];
+    const obs = this.apiService.getAllPosts('ownerUsername', 'asc');
     obs.subscribe((data) =>
       data.forEach((doc) => {
         const data = doc.data() as Post;
         //TODO attach id to post in DB
         data.id = doc.id;
 
-        this.posts.update((prevPosts) => [...prevPosts, data]);
-        this.result = this.posts();
+        this.result.push(data);
       })
     );
+    this.posts.set(this.result);
+  }
+  sortByNewest() {
+    this.result = [];
+    const obs = this.apiService.getAllPosts('createdAt', 'desc');
+    obs.subscribe((data) =>
+      data.forEach((doc) => {
+        const data = doc.data() as Post;
+        //TODO attach id to post in DB
+        data.id = doc.id;
+
+        this.result.push(data);
+      })
+    );
+    this.posts.set(this.result);
+  }
+  sortByOlderst() {
+    this.result = [];
+    const obs = this.apiService.getAllPosts('createdAt', 'asc');
+    obs.subscribe((data) =>
+      data.forEach((doc) => {
+        const data = doc.data() as Post;
+        //TODO attach id to post in DB
+        data.id = doc.id;
+
+        this.result.push(data);
+      })
+    );
+    this.posts.set(this.result);
+  }
+  ngOnInit() {
+    this.result = [];
+    const obs = this.apiService.getAllPosts('createdAt', 'desc');
+    obs.subscribe((data) =>
+      data.forEach((doc) => {
+        const data = doc.data() as Post;
+        //TODO attach id to post in DB
+        data.id = doc.id;
+
+        this.result.push(data);
+      })
+    );
+    this.posts.set(this.result);
+    this.result = this.posts();
   }
 }

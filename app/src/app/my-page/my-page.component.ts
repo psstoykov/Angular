@@ -15,8 +15,10 @@ import { getAuth, onAuthStateChanged } from '@firebase/auth';
   styleUrl: './my-page.component.css',
 })
 export class MyPageComponent implements OnInit {
+  error = signal<string>('');
   isLoading: boolean = true;
   userId: string = '';
+  inputUsername: any;
   constructor(
     private apiService: ApiService,
     private userService: UserService
@@ -26,7 +28,18 @@ export class MyPageComponent implements OnInit {
 
   username(form: NgForm) {
     const { username } = form.value;
+    if (!username) {
+      this.error.set('username required');
+      form.reset();
+      return;
+    } else if (username.length < 3) {
+      this.error.set('username must be at least 3 digits long');
+      form.reset();
+      return;
+    }
+    this.error.set('');
     this.userService.updateProfile(username.trim(), 'displayName');
+    console.log(form.value);
     form.reset();
   }
 

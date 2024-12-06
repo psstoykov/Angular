@@ -20,13 +20,8 @@ export class DetailsComponent implements OnInit {
   commentArr: Comment[] = [];
   isLoading = true;
   photograph: Post[] = [];
+  // createdAt = signal<Date>(this.photograph[0].createdAt);
 
-  //TODO userId is lost when page reloads
-
-  get createdAt() {
-    const date = new Date();
-    return date;
-  }
   postId: string = '';
   constructor(
     private apiService: ApiService,

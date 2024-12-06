@@ -10,6 +10,20 @@
   margin: auto;
   /* width: 50%; */
 }
+.sort {
+  align-self: center;
+  display: flex;
+  gap: 10px;
+}
+.sort button {
+  padding: 10px;
+  border: none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  border-radius: 20px;
+}
+.sort button:hover {
+  background-color: #8f58b4;
+}
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -41,4 +55,7 @@ img {
 }
 input {
   padding: 5px;
+}
+.author {
+  color: #833ab4;
 }

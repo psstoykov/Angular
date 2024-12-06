@@ -10,14 +10,19 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  align-items: baseline;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  gap: 20px;
 }
 
 fieldset {
+  background-color: #ffdc80;
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 input {
   padding-left: 10px;
@@ -67,4 +72,7 @@ img {
 
 h2 {
   align-self: center;
+}
+.error {
+  color: red;
 }

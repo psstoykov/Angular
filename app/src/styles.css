@@ -5,6 +5,8 @@
   margin: 0;
   box-sizing: border-box;
   /* max-width: 90%; */
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 a {
