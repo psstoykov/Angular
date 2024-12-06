@@ -39,6 +39,7 @@
 
 -   [x] Create initial css styles
 -   [x] Added bootstrap library
+-   [x] Trim form inputs before submiting the forms
 
 ## App setup
 

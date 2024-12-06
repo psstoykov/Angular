@@ -8,6 +8,13 @@
 
 input {
   padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+}
+textarea {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
 }
 fieldset {
   display: flex;

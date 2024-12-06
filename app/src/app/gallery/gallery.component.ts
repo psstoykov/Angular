@@ -37,7 +37,6 @@ export class GalleryComponent implements OnInit {
         post.ownerUsername.toLowerCase().includes(this.sq().toLowerCase())
     );
     for (let i = 0; i < this.posts().length; i++) {}
-    console.log(this.sq());
   }
   ngOnInit() {
     const obs = this.apiService.getAllPosts();

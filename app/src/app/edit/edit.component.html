@@ -1,3 +1,6 @@
+@if (isLoading) {
+<app-loader />
+}@else {
 <div class="container">
   <form class="create" #form="ngForm" (ngSubmit)="edit(form)">
     <h2>Edit Post</h2>
@@ -8,8 +11,8 @@
         name="title"
         id="title"
         placeholder="title"
-        ngModel
-        #inputEmail="ngModel"
+        [(ngModel)]="posts()[0].title"
+        #inputTitle="ngModel"
         required
       />
       <label for="imageUrl"></label>
@@ -18,8 +21,8 @@
         name="imageUrl"
         id="imageUrl"
         placeholder="imageUrl"
-        ngModel
-        #inputEmail="ngModel"
+        [(ngModel)]="posts()[0].imageUrl"
+        #inputImageUrl="ngModel"
         required
       />
       <label for="description"></label>
@@ -28,8 +31,8 @@
         name="description"
         id="description"
         placeholder="description"
-        ngModel
-        #inputEmail="ngModel"
+        [(ngModel)]="posts()[0].description"
+        #inputDescription="ngModel"
         required
         value=""
       >
@@ -38,3 +41,4 @@
     </fieldset>
   </form>
 </div>
+}

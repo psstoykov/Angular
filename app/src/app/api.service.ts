@@ -71,8 +71,21 @@ export class ApiService {
   }
   //Get latest posts
 
-  //Edit post
+  //update post
 
+  async updatePost(
+    id: string,
+    title: string,
+    imageUrl: string,
+    description: string
+  ) {
+    const postRef = doc(this.firestore, 'photographs', id);
+    await updateDoc(postRef, {
+      title: title,
+      imageUrl: imageUrl,
+      description: description,
+    });
+  }
   //Delete post
 
   async deletePost(id: string) {

@@ -42,8 +42,12 @@ export class DetailsComponent implements OnInit {
   }
 
   deletePost(id: string) {
-    this.apiService.deletePost(id);
-    this.router.navigate(['/gallery']);
+    //confirm window
+    let result = confirm('Are you sure you want to delete this post?');
+    if (result) {
+      this.apiService.deletePost(id);
+      this.router.navigate(['/gallery']);
+    }
   }
 
   comment(form: NgForm) {
@@ -74,7 +78,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.postId = this.activatedRoute.snapshot.params['postId'];
+    this.postId = this.activatedRoute.snapshot.params['postId']; //get id from params
 
     const ob = this.apiService.getComments(this.postId);
     ob.then((rec) => {

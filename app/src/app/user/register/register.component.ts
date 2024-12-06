@@ -23,13 +23,15 @@ export class RegisterComponent {
       this.errorMessage = 'username must be at least 3 characters';
       return;
     }
-    this.userService.register(email, username, password).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      },
-      error: (err) => {
-        this.errorMessage = err.code;
-      },
-    });
+    this.userService
+      .register(email.trim(), username.trim(), password.trim())
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          this.errorMessage = err.code;
+        },
+      });
   }
 }

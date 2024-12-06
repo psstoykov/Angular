@@ -1,23 +1,45 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { UserService } from '../user/user.service';
+import { ApiService } from '../api.service';
+import { Post } from '../types/posts';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, LoaderComponent],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
 export class EditComponent implements OnInit {
-  postId = input.required<string>();
-  constructor(private activatedRoute: ActivatedRoute) {}
+  isLoading: boolean = true;
+  pageId = input.required<string>(); //rouing using input signal
+  posts = signal<Post[]>([]);
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private apiService: ApiService,
+    private router: Router
+  ) {}
   edit(form: NgForm) {
-    console.log(form.value);
+    const { title, imageUrl, description } = form.value;
+
+    this.apiService.updatePost(
+      this.pageId(),
+      title.trim(),
+      imageUrl.trim(),
+      description.trim()
+    );
+
+    this.router.navigate(['gallery', this.pageId()]);
   }
   ngOnInit(): void {
-    this.postId = this.activatedRoute.snapshot.params['postId'];
-    console.log(this.postId);
-    //get postbyId and fill form values
+    const obs = this.apiService.getPostById(this.pageId());
+    obs.subscribe((data) => {
+      this.posts.update((prev) => [...prev, data.data() as Post]);
+    });
+
+    this.isLoading = false;
   }
 }

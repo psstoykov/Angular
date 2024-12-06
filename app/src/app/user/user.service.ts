@@ -8,6 +8,7 @@ import {
   updateProfile,
   user,
   getAuth,
+  onAuthStateChanged,
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
 import { User } from '../types/user';
@@ -18,6 +19,12 @@ import { User } from '../types/user';
 export class UserService {
   constructor() {}
   auth = inject(Auth);
+  firebaseAuth = inject(Auth);
+  user$ = user(this.firebaseAuth);
+  //signal for current user
+  currentUserSignal = signal<User | null | undefined>(undefined);
+  userId$ = this.currentUserSignal()?.uid!;
+
   getUserId() {
     const user = this.auth.currentUser;
     if (user !== null) {
@@ -25,11 +32,6 @@ export class UserService {
     }
     return null;
   }
-  firebaseAuth = inject(Auth);
-  user$ = user(this.firebaseAuth);
-  //signal for current user
-  currentUserSignal = signal<User | null | undefined>(undefined);
-  userId$ = this.currentUserSignal()?.uid!;
 
   register(
     email: string,
@@ -64,5 +66,26 @@ export class UserService {
     const promise = signOut(this.firebaseAuth);
     //convert to observable
     return from(promise);
+  }
+  //update profile
+  updateProfile(newValue: string, field: string) {
+    updateProfile(this.auth.currentUser!, { [field]: newValue })
+      .then(() => {
+        //profile updated
+        onAuthStateChanged(this.auth, (user) => {
+          if (user) {
+            const uid = user.uid;
+            const username = user.displayName;
+            const email = user.email;
+            this.currentUserSignal.set({ uid, username, email } as User);
+          } else {
+            // User is signed out
+            // ...
+          }
+        });
+      })
+      .catch((error) => {
+        return error;
+      });
   }
 }

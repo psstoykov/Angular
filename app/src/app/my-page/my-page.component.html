@@ -1,1 +1,23 @@
-<p>my-page works!</p>
+<div class="container">
+  <div class="userInfo">
+    <form class="login" #form="ngForm" (ngSubmit)="username(form)">
+      <fieldset>
+        <label for="password"></label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="new username"
+          ngModel
+          #inputUsername="ngModel"
+          minlength="3"
+          required
+        />
+        <button>update</button>
+      </fieldset>
+    </form>
+  </div>
+  <div class="myGallery">
+    <h2>My gallery</h2>
+  </div>
+</div>

@@ -5,6 +5,9 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 0;
 }
+form {
+  background-color: #ececec !important;
+}
 
 form,
 .toRegister {
@@ -14,6 +17,13 @@ form,
 
 input {
   padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+}
+textarea {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
 }
 fieldset {
   display: flex;

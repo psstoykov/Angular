@@ -9,6 +9,7 @@ import { DetailsComponent } from './details/details.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EditComponent } from './edit/edit.component';
 import { GuestGuardService } from './guest-guard.service';
+import { MyPageComponent } from './my-page/my-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -41,12 +42,16 @@ export const routes: Routes = [
     component: CreateComponent,
     canActivate: [AuthGuardService],
   },
-
+  //Edit page
   {
-    path: 'gallery/:postId/edit',
+    path: 'gallery/:pageId/edit',
     component: EditComponent,
   },
-
+  //my  Page
+  {
+    path: 'myPage',
+    component: MyPageComponent,
+  },
   //redirect any random url back to home page
   { path: '**', component: NotFoundComponent },
 ];

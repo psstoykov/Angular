@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
             username: user.displayName!,
             uid: this.auth.currentUser?.uid,
           });
-          console.log(this.userService.currentUserSignal());
+          // console.log(this.userService.currentUserSignal());
         } else {
           this.userService.currentUserSignal.set(null);
         }
