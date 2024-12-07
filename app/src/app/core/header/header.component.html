@@ -1,13 +1,10 @@
 <div class="title">
-  <h1><a href="/home">PhotoBooth</a></h1>
-  @if (userService.currentUserSignal() !== undefined) {
-  @if(userService.currentUserSignal() !== null) {
-  <p>Welcome, {{ username }}</p>
+  <h1><a routerLink="/home">PhotoBooth</a></h1>
+  @if (userService.currentUserSignal() !== undefined){
+  @if(userService.currentUserSignal() !== null){
+  <p>Welcome, {{ user?.displayName }}</p>
   }@else{
-
   <p>Welcome, guest</p>
-  } }@else {
-  <p>Welcome,</p>
-  }
+  }}
 </div>
 <app-nav />

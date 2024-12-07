@@ -15,12 +15,14 @@ export class RegisterComponent {
   errorMessage: string | null = null;
   register(form: NgForm) {
     const { email, username, password, repass } = form.value;
-
+    if (password !== repass) {
+      this.errorMessage = 'Passwords must match';
+      return;
+    }
     this.userService
       .register(email.trim(), username.trim(), password.trim())
       .subscribe({
         next: () => {
-          this.userService.currentUserSignal.set(username);
           this.router.navigate(['/home']);
         },
         error: (err) => {

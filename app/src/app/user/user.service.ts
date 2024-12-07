@@ -43,11 +43,18 @@ export class UserService {
       this.firebaseAuth,
       email,
       password
-    ).then((response) => {
-      //update display name in user profile
-      //more update options available
-      updateProfile(response.user, { displayName: username });
-    });
+    )
+      .then((response) => {
+        updateProfile(response.user, { displayName: username });
+        const user: User = {
+          username: response.user.displayName!,
+          email: response.user.email!,
+          uid: response.user.uid,
+        };
+        this.currentUserSignal.set(user);
+      })
+      //resolve the UserCredential
+      .then(() => {});
     //convert to observable
     return from(promise);
   }
