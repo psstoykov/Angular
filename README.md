@@ -19,11 +19,14 @@
 
 -   public part for guest users
 -   guest users can browse the gallery, read comments, search in the gallery and see post details
--   users can Register and login with email and password
--   logged in users inherit all functinallities of guest users
+-   guest users can register and login with email and password
 -   logged in users can create new posts and comment on all other posts.
+-   logged in users can browse the gallery, read and write comments, search in the gallery and see post details
 -   logged in users can edit and delete their own posts
 -   logged in users can update their profile name
+-   search window in gallery is case insensitive and matches resuls for title, description and author.
+-   profile info about last login and profile active since in My Page
+-   gallery dynamic sorting either by user or latest or oldest posts
 
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
