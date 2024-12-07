@@ -13,6 +13,8 @@
 .search-bar input {
   width: 100%;
   padding-left: 10px;
+  border: none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 .sort {
   align-self: center;
@@ -27,6 +29,7 @@
 }
 .sort button:hover {
   background-color: #833ab4;
+  color: white;
 }
 .gallery {
   display: flex;
@@ -62,4 +65,8 @@ input {
 }
 .author {
   color: #833ab4;
+}
+
+.createdAt {
+  font-style: italic;
 }

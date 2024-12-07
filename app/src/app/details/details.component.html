@@ -5,7 +5,12 @@
   <div class="left">
     <h2>{{ post.title }}</h2>
     <div class="frame"><img [src]="post.imageUrl" /></div>
-    <p class="postedBy">Posted by: {{ post.ownerUsername }}</p>
+    <div class="info">
+      <p class="postedBy">Posted by: {{ post.ownerUsername }}</p>
+      <p class="createdAt">
+        Posted on: {{ post.createdAt | dateTransform | date : "medium" }}
+      </p>
+    </div>
     <!-- TODO fix time  stamp-->
     <!-- <p class="createdAt">Posted on: {{ createdAt() | date : "short" }}</p> -->
     @if(isOwner){

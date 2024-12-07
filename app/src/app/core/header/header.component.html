@@ -1,10 +1,13 @@
 <div class="title">
   <h1><a href="/home">PhotoBooth</a></h1>
-  @if (username) {
-  <!-- TODO fix the switching of guest/user while loading -->
+  @if (userService.currentUserSignal() !== undefined) {
+  @if(userService.currentUserSignal() !== null) {
   <p>Welcome, {{ username }}</p>
-  }@else {
+  }@else{
+
   <p>Welcome, guest</p>
+  } }@else {
+  <p>Welcome,</p>
   }
 </div>
 <app-nav />

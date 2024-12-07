@@ -11,7 +11,7 @@ import { LoaderComponent } from '../../loader/loader.component';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  constructor(private userService: UserService) {}
+  constructor(public userService: UserService) {}
 
   get username(): string | undefined {
     return this.userService.currentUserSignal()?.username;

@@ -11,13 +11,21 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 import { validatePassword } from '@angular/fire/auth';
+import { DateTransform } from '../date.transoform.pipe';
 
 @Component({
   selector: 'app-my-page',
   standalone: true,
-  imports: [RouterLink, LoaderComponent, ReactiveFormsModule, NgIf],
+  imports: [
+    RouterLink,
+    LoaderComponent,
+    ReactiveFormsModule,
+    NgIf,
+    DatePipe,
+    DateTransform,
+  ],
   templateUrl: './my-page.component.html',
   styleUrl: './my-page.component.css',
 })

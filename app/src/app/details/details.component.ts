@@ -7,11 +7,19 @@ import { UserService } from '../user/user.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { Comment } from '../types/comment';
 import { DatePipe, UpperCasePipe } from '@angular/common';
+import { DateTransform } from '../date.transoform.pipe';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, FormsModule, LoaderComponent, UpperCasePipe, DatePipe],
+  imports: [
+    RouterLink,
+    FormsModule,
+    LoaderComponent,
+    UpperCasePipe,
+    DateTransform,
+    DatePipe,
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })

@@ -11,11 +11,13 @@ import { Post } from '../types/posts';
 import { RouterLink } from '@angular/router';
 import { Auth } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
+import { DateTransform } from '../date.transoform.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, DateTransform, DatePipe],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.css',
 })

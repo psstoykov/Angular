@@ -4,6 +4,7 @@ import { RouterLink, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { Auth } from '@angular/fire/auth';
 import { UserService } from '../user/user.service';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-create',
@@ -28,7 +29,7 @@ export class CreateComponent {
       return;
     }
     const { title, imageUrl, description } = form.value;
-    const createdAt = new Date();
+    const createdAt = Timestamp.now();
     if (!title || !imageUrl || !description) {
       this.error.set('all fields are required');
       form.reset();

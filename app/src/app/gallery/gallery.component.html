@@ -23,6 +23,9 @@
       </div>
       <div class="title">{{ post.title }}</div>
       <div class="author">by {{ post.ownerUsername }}</div>
+      <div class="createdAt">
+        Posted on: {{ post.createdAt | dateTransform | date : "medium" }}
+      </div>
     </div>
     }
   </div>

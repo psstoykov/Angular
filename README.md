@@ -3,15 +3,16 @@
 ## Project info
 
 -   Angular app with firebase backend
--   public page: https://angular-77bd6.web.app/
--   all collections except users handled by the firestore cloud db
+-   public domain: https://angular-77bd6.web.app/
+-   all collections except users are handled by the firestore cloud db
 -   users collection and auth pipeline handled by the official firebase api
 
 ## How to run locally
 
 -   clone github repository
+-   run npm i @angular/cli
 -   run npm install in terminal
--   run ng serve in terminal
+-   run ng serve in terminal to start application
 -   app runnig on http://localhost:4200/
 
 ## App functinality

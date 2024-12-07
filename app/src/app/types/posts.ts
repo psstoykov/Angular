@@ -6,7 +6,7 @@ export interface Post {
   title: string;
   imageUrl: string;
   description: string;
-  createdAt: Date;
+  createdAt: Timestamp;
   ownerId: string;
   ownerUsername: string;
   id?: string;

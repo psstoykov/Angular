@@ -115,3 +115,11 @@ span {
   gap: 10px;
   flex-wrap: wrap;
 }
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+.createdAt {
+  font-style: italic;
+}

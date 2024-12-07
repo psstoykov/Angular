@@ -81,7 +81,12 @@
           <img [src]="post.imageUrl" />
         </a>
       </div>
-      <div class="title">{{ post.title }}</div>
+      <div class="info">
+        <p class="title">{{ post.title }}</p>
+        <p class="createdAt">
+          {{ post.createdAt | dateTransform | date : "medium" }}
+        </p>
+      </div>
     </div>
     }
   </div>
