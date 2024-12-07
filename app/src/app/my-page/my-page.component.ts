@@ -12,7 +12,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
-import { validatePassword } from '@angular/fire/auth';
+
 import { DateTransform } from '../date.transoform.pipe';
 import { User } from '../types/user';
 import { UserInfo } from '../types/userInfo';
@@ -27,7 +27,6 @@ import { UserInfo } from '../types/userInfo';
     NgIf,
     DatePipe,
     DateTransform,
-    AsyncPipe,
   ],
   templateUrl: './my-page.component.html',
   styleUrl: './my-page.component.css',
@@ -42,12 +41,25 @@ export class MyPageComponent implements OnInit {
     private apiService: ApiService,
     private userService: UserService
   ) {}
+  messageSignal = signal<string>('');
+  passwordSignal = signal<string>('');
   usernameForm = this.fb.group({
     newUsername: ['', [Validators.required, Validators.minLength(3)]],
   });
 
+  passwordForm = this.fb.group({
+    newPassword: ['', [Validators.required, Validators.minLength(5)]],
+    rePass: ['', [Validators.required, Validators.minLength(5)]],
+  });
+
   onSubmitUsername(): void {
     const { newUsername } = this.usernameForm.value;
+
+    if (newUsername?.trim().length! < 3) {
+      this.messageSignal.set('username must be at least 3 characters long');
+      return;
+    }
+    this.messageSignal.set('');
 
     const obs = this.userService.updateProfile(
       newUsername as string,
@@ -56,16 +68,18 @@ export class MyPageComponent implements OnInit {
     this.usernameForm.reset();
   }
 
-  // registerForm = this.fb.group({
-  //   newPassword: [
-  //     '',
-  //     [validatePassword, Validators.required, Validators.minLength(5)],
-  //   ],
-  //   rePass: [
-  //     '',
-  //     [validatePassword, Validators.required, Validators.minLength(5)],
-  //   ],
-  // });
+  onSubmitPassword(): void {
+    const { newPassword, rePass } = this.passwordForm.value;
+    if (newPassword !== rePass) {
+      this.passwordSignal.set('passwords must match');
+      return;
+    } else if (newPassword?.length! < 5) {
+      this.passwordSignal.set('password must be at least 5 characters');
+      return;
+    }
+    this.userService.updatePassword(newPassword!);
+    this.passwordForm.reset();
+  }
   posts = signal<Post[]>([]);
 
   ngOnInit() {

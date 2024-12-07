@@ -98,9 +98,9 @@ export class UserService {
   }
 
   updatePassword(newPass: string) {
-    const user = getAuth().currentUser;
+    const user = getAuth().currentUser!;
 
-    updatePassword(user!, newPass)
+    updatePassword(user, newPass)
       .then(() => {
         return 'Password successfully updated!';
       })

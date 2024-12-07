@@ -24,53 +24,60 @@
                 usernameForm.get('newUsername')?.touched)
             "
           />
-          <span
-            class="error"
-            *ngIf="
-              usernameForm.get('newUsername')?.hasError('required') &&
-              (usernameForm.get('newUsername')?.dirty ||
-                usernameForm.get('newUsername')?.touched)
-            "
-            >field is required</span
-          >
         </div>
         <div class="submit">
           <button type="submit" class="button">Update</button>
         </div>
+        @if(messageSignal()) {
+        <div class="error">
+          {{ messageSignal() }}
+        </div>
+        }
       </form>
+      <div class="divider"></div>
       <!-- update password form -->
-      <!-- <form
-      class="passwordForm"
-      [formGroup]="registerForm"
-      (ngSubmit)="onSubmitUsername()"
-    >
-      <div class="field">
-        <label class="label"></label>
-        <input
-          type="text"
-          class="input"
-          placeholder="new username"
-          formControlName="newUsername"
-          [class.invalid]="
-            registerForm.get('newUsername')?.invalid &&
-            (registerForm.get('newUsername')?.dirty ||
-              registerForm.get('newUsername')?.touched)
-          "
-        />
-        <span
-          class="error"
-          *ngIf="
-            registerForm.get('newUsername')?.hasError('required') &&
-            (registerForm.get('newUsername')?.dirty ||
-              registerForm.get('newUsername')?.touched)
-          "
-          >field is required</span
-        >
-      </div>
-      <div class="submit">
-        <button type="submit" class="button">Update</button>
-      </div>
-    </form> -->
+      <form
+        class="passwordForm"
+        [formGroup]="passwordForm"
+        (ngSubmit)="onSubmitPassword()"
+      >
+        <div class="field">
+          <label class="label"></label>
+          <input
+            type="password"
+            class="input"
+            placeholder="repeat Password"
+            formControlName="rePass"
+            [class.invalid]="
+              passwordForm.get('rePass')?.invalid &&
+              (passwordForm.get('rePass')?.dirty ||
+                passwordForm.get('rePass')?.touched)
+            "
+          />
+        </div>
+        <div class="field">
+          <label class="label"></label>
+          <input
+            type="password"
+            class="input"
+            placeholder="new Password"
+            formControlName="newPassword"
+            [class.invalid]="
+              passwordForm.get('newPassword')?.invalid &&
+              (passwordForm.get('newPassword')?.dirty ||
+                passwordForm.get('newPassword')?.touched)
+            "
+          />
+        </div>
+        <div class="submit">
+          <button type="submit" class="button">Update</button>
+        </div>
+        @if(passwordSignal()) {
+        <div class="error">
+          {{ passwordSignal() }}
+        </div>
+        }
+      </form>
     </div>
     <div class="right">
       <span class="activeSince">
@@ -78,7 +85,7 @@
         <p class="infoDate">{{ userinfo?.createAt | date : "medium" }}</p>
       </span>
       <span class="lastLogin">
-        <p class="infoText">Last Login on:</p>
+        <p class="infoText">Last Login:</p>
         <p class="infoDate">{{ userinfo?.lastLoginAt | date : "medium" }}</p>
       </span>
     </div>
