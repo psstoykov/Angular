@@ -11,8 +11,8 @@
 
 -   clone github repository
 -   run npm i @angular/cli
--   run npm install in terminal
--   run ng serve in terminal to start application
+-   run npm install
+-   run ng serve to start application
 -   app runnig on http://localhost:4200/
 
 ## Core Functionalities
@@ -23,10 +23,11 @@
 -   logged in users can create new posts and comment on all other posts.
 -   logged in users can browse the gallery, read and write comments, search in the gallery and see post details
 -   logged in users can edit and delete their own posts
--   logged in users can update their profile name
--   search window in gallery is case insensitive and matches resuls for title, description and author.
--   profile info about last login and profile active since in My Page
--   gallery dynamic sorting either by user or latest or oldest posts
+-   logged in users can update their profile name on /My Page
+-   logged in users can set a new password on /My Page
+-   search window in the gallery is case insensitive and matches resuls for title, description and author.
+-   profile info about "last login" and "active since" on /My Page
+-   gallery dynamic sorting available either by username or latest or oldest posts
 
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
