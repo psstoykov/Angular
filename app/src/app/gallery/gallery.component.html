@@ -17,7 +17,7 @@
     @for (post of posts(); track $index){
     <div class="picture-frame">
       <div class="picture">
-        <a [routerLink]="post.id" routerLinkActive="router-link-active">
+        <a [routerLink]="post.id">
           <img [src]="post.imageUrl" />
         </a>
       </div>
