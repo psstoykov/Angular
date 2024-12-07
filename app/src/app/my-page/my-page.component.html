@@ -2,44 +2,44 @@
 <app-loader />
 }@else {
 <div class="container">
+  <h2>Update Profile Info</h2>
   <div class="userInfo">
-    <h2>Update Profile Info</h2>
-    <!-- create user profile forms -->
-    <!-- update username form -->
-    <form
-      class="usernameForm"
-      [formGroup]="usernameForm"
-      (ngSubmit)="onSubmitUsername()"
-    >
-      <div class="field">
-        <label class="label"></label>
-        <input
-          type="text"
-          class="input"
-          placeholder="new username"
-          formControlName="newUsername"
-          [class.invalid]="
-            usernameForm.get('newUsername')?.invalid &&
-            (usernameForm.get('newUsername')?.dirty ||
-              usernameForm.get('newUsername')?.touched)
-          "
-        />
-        <span
-          class="error"
-          *ngIf="
-            usernameForm.get('newUsername')?.hasError('required') &&
-            (usernameForm.get('newUsername')?.dirty ||
-              usernameForm.get('newUsername')?.touched)
-          "
-          >field is required</span
-        >
-      </div>
-      <div class="submit">
-        <button type="submit" class="button">Update</button>
-      </div>
-    </form>
-    <!-- update password form -->
-    <form
+    <div class="left">
+      <!-- update username form -->
+      <form
+        class="usernameForm"
+        [formGroup]="usernameForm"
+        (ngSubmit)="onSubmitUsername()"
+      >
+        <div class="field">
+          <label class="label"></label>
+          <input
+            type="text"
+            class="input"
+            placeholder="new username"
+            formControlName="newUsername"
+            [class.invalid]="
+              usernameForm.get('newUsername')?.invalid &&
+              (usernameForm.get('newUsername')?.dirty ||
+                usernameForm.get('newUsername')?.touched)
+            "
+          />
+          <span
+            class="error"
+            *ngIf="
+              usernameForm.get('newUsername')?.hasError('required') &&
+              (usernameForm.get('newUsername')?.dirty ||
+                usernameForm.get('newUsername')?.touched)
+            "
+            >field is required</span
+          >
+        </div>
+        <div class="submit">
+          <button type="submit" class="button">Update</button>
+        </div>
+      </form>
+      <!-- update password form -->
+      <!-- <form
       class="passwordForm"
       [formGroup]="registerForm"
       (ngSubmit)="onSubmitUsername()"
@@ -70,8 +70,20 @@
       <div class="submit">
         <button type="submit" class="button">Update</button>
       </div>
-    </form>
+    </form> -->
+    </div>
+    <div class="right">
+      <span class="activeSince">
+        <p class="infoText">Active since:</p>
+        <p class="infoDate">{{ userinfo?.createAt | date : "medium" }}</p>
+      </span>
+      <span class="lastLogin">
+        <p class="infoText">Last Login on:</p>
+        <p class="infoDate">{{ userinfo?.lastLoginAt | date : "medium" }}</p>
+      </span>
+    </div>
   </div>
+
   <h2>My Posts</h2>
   <div class="gallery">
     @for (post of posts(); track $index){

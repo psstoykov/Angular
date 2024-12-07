@@ -11,9 +11,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { DatePipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
 import { validatePassword } from '@angular/fire/auth';
 import { DateTransform } from '../date.transoform.pipe';
+import { User } from '../types/user';
+import { UserInfo } from '../types/userInfo';
 
 @Component({
   selector: 'app-my-page',
@@ -25,6 +27,7 @@ import { DateTransform } from '../date.transoform.pipe';
     NgIf,
     DatePipe,
     DateTransform,
+    AsyncPipe,
   ],
   templateUrl: './my-page.component.html',
   styleUrl: './my-page.component.css',
@@ -34,6 +37,7 @@ export class MyPageComponent implements OnInit {
   userId: string = '';
   fb = inject(NonNullableFormBuilder);
 
+  userinfo: UserInfo | undefined = undefined;
   constructor(
     private apiService: ApiService,
     private userService: UserService
@@ -52,16 +56,16 @@ export class MyPageComponent implements OnInit {
     this.usernameForm.reset();
   }
 
-  registerForm = this.fb.group({
-    newPassword: [
-      '',
-      [validatePassword, Validators.required, Validators.minLength(5)],
-    ],
-    rePass: [
-      '',
-      [validatePassword, Validators.required, Validators.minLength(5)],
-    ],
-  });
+  // registerForm = this.fb.group({
+  //   newPassword: [
+  //     '',
+  //     [validatePassword, Validators.required, Validators.minLength(5)],
+  //   ],
+  //   rePass: [
+  //     '',
+  //     [validatePassword, Validators.required, Validators.minLength(5)],
+  //   ],
+  // });
   posts = signal<Post[]>([]);
 
   ngOnInit() {
@@ -69,6 +73,10 @@ export class MyPageComponent implements OnInit {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        this.userinfo = {
+          createAt: user.metadata.creationTime!,
+          lastLoginAt: user.metadata.lastSignInTime!,
+        };
         const obs = this.apiService.getMyPosts(user.uid);
         obs.subscribe((snap) => {
           snap.forEach((doc) => {

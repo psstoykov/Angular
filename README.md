@@ -15,6 +15,18 @@
 -   run ng serve in terminal to start application
 -   app runnig on http://localhost:4200/
 
+## Core Functionalities
+
+-   public part for guest users
+-   guest users can browse the gallery, read comments, search in the gallery and see post details
+-   users can Register and login with email and password
+-   logged in users inherit all functinallities of guest users
+-   logged in users can create new posts and comment on all other posts.
+-   logged in users can edit and delete their own posts
+-   logged in users can update their profile name
+
+> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+
 ## App functinality
 
 -   public part, where users can access Login, Register, Home and Gallery
