@@ -4,27 +4,73 @@
 <div class="container">
   <div class="userInfo">
     <h2>Update Profile Info</h2>
-    <!-- new username form -->
-    <form class="username" #form="ngForm" (ngSubmit)="username(form)">
-      @if (error().length>0){
-      <p class="error">{{ error() }}</p>
-      }
-      <fieldset>
-        <label for="username"> </label>
+    <!-- create user profile forms -->
+    <!-- update username form -->
+    <form
+      class="usernameForm"
+      [formGroup]="usernameForm"
+      (ngSubmit)="onSubmitUsername()"
+    >
+      <div class="field">
+        <label class="label"></label>
         <input
           type="text"
-          name="username"
-          id="username"
+          class="input"
           placeholder="new username"
-          ngModel
-          #inputUsername="ngModel"
-          minlength="3"
-          required
+          formControlName="newUsername"
+          [class.invalid]="
+            usernameForm.get('newUsername')?.invalid &&
+            (usernameForm.get('newUsername')?.dirty ||
+              usernameForm.get('newUsername')?.touched)
+          "
         />
-        <button>update</button>
-      </fieldset>
+        <span
+          class="error"
+          *ngIf="
+            usernameForm.get('newUsername')?.hasError('required') &&
+            (usernameForm.get('newUsername')?.dirty ||
+              usernameForm.get('newUsername')?.touched)
+          "
+          >field is required</span
+        >
+      </div>
+      <div class="submit">
+        <button type="submit" class="button">Update</button>
+      </div>
     </form>
-    <!-- new password form -->
+    <!-- update password form -->
+    <form
+      class="passwordForm"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmitUsername()"
+    >
+      <div class="field">
+        <label class="label"></label>
+        <input
+          type="text"
+          class="input"
+          placeholder="new username"
+          formControlName="newUsername"
+          [class.invalid]="
+            registerForm.get('newUsername')?.invalid &&
+            (registerForm.get('newUsername')?.dirty ||
+              registerForm.get('newUsername')?.touched)
+          "
+        />
+        <span
+          class="error"
+          *ngIf="
+            registerForm.get('newUsername')?.hasError('required') &&
+            (registerForm.get('newUsername')?.dirty ||
+              registerForm.get('newUsername')?.touched)
+          "
+          >field is required</span
+        >
+      </div>
+      <div class="submit">
+        <button type="submit" class="button">Update</button>
+      </div>
+    </form>
   </div>
   <h2>My Posts</h2>
   <div class="gallery">

@@ -63,6 +63,11 @@ export const routes: Routes = [
     redirectTo: '/gallery/:pageId',
     pathMatch: 'full',
   },
+  {
+    path: 'home/:pageId',
+    redirectTo: 'gallery/:pageId',
+    pathMatch: 'full',
+  },
   //redirect any random url back to home page
   { path: '**', component: NotFoundComponent },
 ];

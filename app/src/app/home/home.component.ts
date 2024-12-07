@@ -14,6 +14,7 @@ import { Post } from '../types/posts';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
+  pageId = input.required<string>();
   posts = signal<Post[]>([]);
 
   constructor(private apiService: ApiService) {}
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
     obs.subscribe((data) => {
       data.forEach((doc) => {
         const result = doc.data() as Post;
-
+        result.id = doc.id;
         this.posts.update((prev) => [...prev, result]);
       });
     });
