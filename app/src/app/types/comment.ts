@@ -1,6 +1,8 @@
+import { Timestamp } from '@angular/fire/firestore';
+
 export interface Comment {
   text: string;
   ownerId: string;
-  createdAt: Date;
+  createdAt: Timestamp;
   username: string;
 }

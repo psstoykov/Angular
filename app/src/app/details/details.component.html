@@ -10,6 +10,7 @@
       <p class="createdAt">
         Posted on: {{ post.createdAt | dateTransform | date : "medium" }}
       </p>
+      <p>{{ post.commentCount?.toString() }}</p>
     </div>
 
     @if(isOwner){
@@ -44,9 +45,15 @@
       <ul class="comments">
         @for (comment of commentSignal(); track $index){
         <div class="comment-li">
-          <li>{{ comment.text }}</li>
-          <!-- upperCasePipe -->
-          <span>{{ comment.username | uppercase }} </span>
+          <div class="comment-text">
+            <li>{{ comment.text }}</li>
+          </div>
+          <div class="comment-info">
+            <span>{{ comment.username | uppercase }} </span>
+            <span>{{
+              comment.createdAt | dateTransform | date : "medium"
+            }}</span>
+          </div>
         </div>
         }
       </ul>

@@ -18,6 +18,8 @@
 ## Core Functionalities
 
 -   public part for guest users
+-   latest three posts visible at the home page with direct path to details
+-   timestamps on posts and comments
 -   guest users can browse the gallery, read comments, search in the gallery and see post details
 -   guest users can register and login with email and password
 -   logged in users can create new posts and comment on all other posts.
@@ -30,14 +32,6 @@
 -   gallery dynamic sorting available either by username or latest or oldest posts
 
 > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
-
-## App functinality
-
--   public part, where users can access Login, Register, Home and Gallery
--   public part can access post details and read available comments
--   users with an account can create their own posts
--   users with an account can comment on any post.
--   users with an accound can edit and delete their own posts
 
 ## Initialize Angular App
 
@@ -74,9 +68,9 @@
 -   [x] get all photographs
 -   [x] create photograph
 -   [x] get photograph by id
--   [/] edit page
+-   [x] edit page
 -   [x] delete post
--   [ ] my Page
+-   [x] my Page
 
 ## User-Service
 

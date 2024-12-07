@@ -8,6 +8,7 @@ import { LoaderComponent } from '../loader/loader.component';
 import { Comment } from '../types/comment';
 import { DatePipe, UpperCasePipe } from '@angular/common';
 import { DateTransform } from '../date.transoform.pipe';
+import { Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-details',
@@ -60,7 +61,7 @@ export class DetailsComponent implements OnInit {
   comment(form: NgForm) {
     const { text } = form.value;
     const userId = this.userService.currentUserSignal()?.uid;
-    const date = new Date();
+    const date = Timestamp.now();
     const username = this.userService.currentUserSignal()?.username;
     if (form.invalid) {
       console.log('Invalid Comment');

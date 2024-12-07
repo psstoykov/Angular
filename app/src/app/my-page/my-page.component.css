@@ -66,12 +66,17 @@ h2 {
 
 input {
   padding-left: 10px;
-  /* height: 100%; */
+  border: none;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  border-radius: 10px;
+  flex-grow: 1;
 }
 form {
   display: flex;
 }
 form button {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  border: none;
   padding: 5px;
   border-radius: 10px;
 }
@@ -90,10 +95,10 @@ form button:hover {
   border: 2px solid red;
 }
 
-.title {
+/* .title {
   color: #833ab4;
   text-align: center;
-}
+} */
 .createdAt {
   font-style: italic;
 }

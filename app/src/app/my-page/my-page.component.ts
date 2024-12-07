@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ApiService } from '../api.service';
 import { UserService } from '../user/user.service';
 import { Post } from '../types/posts';
@@ -24,7 +24,6 @@ import { UserInfo } from '../types/userInfo';
     RouterLink,
     LoaderComponent,
     ReactiveFormsModule,
-    NgIf,
     DatePipe,
     DateTransform,
   ],

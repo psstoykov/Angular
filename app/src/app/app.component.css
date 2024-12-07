@@ -4,11 +4,11 @@
   max-width: 0;
   max-width: 90%;
   margin: auto;
+  min-height: 100vh;
 }
 .main {
   margin: 30px;
   max-width: none;
-  min-height: 100vh;
   display: flex;
   flex: 1 1 100%;
   justify-content: center;

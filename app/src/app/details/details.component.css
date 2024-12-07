@@ -1,13 +1,16 @@
 .container {
-  height: 50%;
+  width: 100%;
   padding: 0;
   display: flex;
   gap: 30px;
+  justify-content: start;
 }
 img {
-  height: 60vh;
+  width: 100%;
+  height: auto;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 0px auto;
 }
 
 h2 {
@@ -19,13 +22,11 @@ h2 {
   border-radius: 10px;
 }
 .menubar {
-  /* background-color: black; */
-  border: 3px solid #833ab4;
-
   display: flex;
-  gap: 10px;
+  /* gap: 10px; */
   justify-content: space-evenly;
-  padding: 5px 0px;
+  margin: 0px;
+  /* padding: 5px 0px; */
 }
 
 .comment-box {
@@ -36,7 +37,8 @@ h2 {
   /* flex-wrap: wrap; */
   padding: 30px;
   gap: 20px;
-  height: max-content;
+
+  /* height: max-content; */
 }
 .comment-box input {
   height: max-content;
@@ -52,12 +54,16 @@ fieldset {
   justify-content: center;
 }
 button {
-  color: white;
-  background-color: black;
+  /* flex-basis: 100%; */
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
   opacity: 0.8;
   border: none;
   padding: 10px;
   border-radius: 10px;
+}
+button:hover {
+  color: white;
+  background-color: #833ab4;
 }
 .edit {
   color: black;
@@ -71,6 +77,8 @@ button {
 textarea {
   padding: 5px;
   width: 70%;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  border: none;
 }
 a {
   font-size: 2rem;
@@ -97,12 +105,18 @@ li {
 .comment-li {
   background-color: white;
   display: flex;
-  justify-content: space-around;
+
+  justify-content: space-between;
   align-items: center;
+}
+.comment-info {
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
 }
 span {
   flex-basis: 30%;
-  /* font-size: 1.5rem; */
+
   color: green;
 }
 
