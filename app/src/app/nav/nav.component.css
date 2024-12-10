@@ -23,6 +23,7 @@ a:hover {
 .nav-left {
   width: 50%-10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 15px;
 }
@@ -30,6 +31,7 @@ a:hover {
 .nav-right {
   width: 50%-10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 5px;
 }

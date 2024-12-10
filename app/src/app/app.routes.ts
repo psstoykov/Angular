@@ -37,6 +37,7 @@ export const routes: Routes = [
     path: 'gallery/:postId',
 
     component: DetailsComponent,
+    pathMatch: 'full',
   },
   //Create page
   {
@@ -46,9 +47,11 @@ export const routes: Routes = [
   },
   //Edit page
   {
+    //add the owner-guard service
     path: 'gallery/:pageId/edit',
     component: EditComponent,
     canActivate: [AuthGuardService],
+    pathMatch: 'full',
 
     //TODO implement owner guard
   },

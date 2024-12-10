@@ -1,9 +1,8 @@
 .container {
-  width: 90%;
+  /* width: 90%; */
   height: auto;
   padding: 0;
 
-  max-width: none;
   display: flex;
   flex-wrap: wrap;
   /* margin: 10% auto; */
@@ -40,16 +39,16 @@ h1 {
   gap: 10px;
 }
 .picture-container {
-  /* border: 3px solid black; */
+  width: 90%;
   border-radius: 15px;
   padding: 20px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   align-items: end;
   justify-content: space-evenly;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  /* flex-direction: column; */
 }
 
 .picture-frame {
