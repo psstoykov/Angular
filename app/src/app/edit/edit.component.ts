@@ -1,22 +1,25 @@
-import { Component, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { ApiService } from '../api.service';
 import { Post } from '../types/posts';
 import { LoaderComponent } from '../loader/loader.component';
+import { User } from '../types/user';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [RouterLink, FormsModule, LoaderComponent],
+  imports: [FormsModule, LoaderComponent],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
 export class EditComponent implements OnInit {
+  user!: User;
+  route = inject(ActivatedRoute);
   isLoading: boolean = true;
   pageId = input.required<string>(); //rouing using input signal
-  posts = signal<Post | null>(null);
+  posts!: Post;
   constructor(
     private apiService: ApiService,
     private userService: UserService,
@@ -24,7 +27,6 @@ export class EditComponent implements OnInit {
   ) {}
   edit(form: NgForm) {
     const { title, imageUrl, description } = form.value;
-
     this.apiService.updatePost(
       this.pageId(),
       title.trim(),
@@ -35,11 +37,13 @@ export class EditComponent implements OnInit {
     this.router.navigate(['gallery', this.pageId()]);
   }
   ngOnInit(): void {
+    this.user = this.route.snapshot.data['user'];
+    console.log(this.pageId);
     const currentUserId = this.userService.currentUserSignal()?.uid;
     const obs = this.apiService.getPostById(this.pageId());
 
     obs.subscribe((data) => {
-      this.posts.set(data.data() as Post);
+      this.posts = data.data() as Post;
     });
 
     this.isLoading = false;

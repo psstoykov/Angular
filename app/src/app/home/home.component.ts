@@ -1,15 +1,13 @@
 import { Component, input, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../api.service';
-
-import { DatePipe, JsonPipe } from '@angular/common';
 import { Post } from '../types/posts';
 
 @Component({
   selector: 'app-home',
   providers: [ApiService],
   standalone: true,
-  imports: [RouterLink, JsonPipe, DatePipe],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

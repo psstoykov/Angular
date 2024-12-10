@@ -23,10 +23,9 @@ h2 {
 }
 .menubar {
   display: flex;
-  /* gap: 10px; */
+
   justify-content: space-evenly;
   margin: 0px;
-  /* padding: 5px 0px; */
 }
 
 .comment-box {
@@ -34,11 +33,9 @@ h2 {
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
+
   padding: 30px;
   gap: 20px;
-
-  /* height: max-content; */
 }
 .comment-box input {
   height: max-content;
@@ -54,7 +51,6 @@ fieldset {
   justify-content: center;
 }
 button {
-  /* flex-basis: 100%; */
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
   opacity: 0.8;
   border: none;
@@ -103,6 +99,7 @@ li {
   margin: auto;
 }
 .comment-li {
+  padding-right: 10px;
   background-color: white;
   display: flex;
 

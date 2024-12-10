@@ -29,7 +29,6 @@ export class DetailsComponent implements OnInit {
   commentArr: Comment[] = [];
   isLoading = true;
   photograph: Post[] = [];
-  // createdAt = signal<Date>(this.photograph[0].createdAt);
 
   postId: string = '';
   constructor(

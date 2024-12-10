@@ -20,7 +20,6 @@
 .passwordForm {
   display: flex;
   gap: 10px;
-  /* flex-direction: column; */
 }
 
 .field {
@@ -50,7 +49,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* justify-content: center; */
 }
 .picture {
   margin: auto;
@@ -95,10 +93,6 @@ form button:hover {
   border: 2px solid red;
 }
 
-/* .title {
-  color: #833ab4;
-  text-align: center;
-} */
 .createdAt {
   font-style: italic;
 }

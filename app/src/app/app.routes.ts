@@ -10,7 +10,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EditComponent } from './edit/edit.component';
 import { GuestGuardService } from './guest-guard.service';
 import { MyPageComponent } from './my-page/my-page.component';
-import { OwnerGuardService } from './owner-guard.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
