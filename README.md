@@ -18,20 +18,21 @@
 ## Core Functionalities
 
 -   public part for guest users
--   latest three posts visible at the home page with direct path to details
--   timestamps on posts and comments
--   guest users can browse the gallery, read comments, search in the gallery and see post details
+-   latest three posts visible at the home page with direct rouing to details
+-   guest users can browse and search the gallery, read comments and see post details
 -   guest users can register and login with email and password
--   logged in users can create new posts and comment on all posts.
+-   logged in users can create new posts and comment on all posts
+-   new comments appear dynamically on top of the list, without reloading the page
 -   logged in users can browse the gallery, read and write comments, search in the gallery and see post details
 -   logged in users can edit and delete their own posts
 -   logged in users can update their profile name on /My Page
 -   logged in users can set a new password on /My Page
--   search window in the gallery is case insensitive and matches resuls for title, description and author.
+-   search window in the gallery is case insensitive and matches resuls for title, description and author
 -   profile info about "last login" and "active since" on /My Page
--   gallery dynamic sorting available either by username or latest or oldest posts
-
-> > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
+-   gallery dynamic sorting available in three options: either by username, latest or oldest posts
+-   four types of custom route guards for guests, logged-in, invalid url params and owner detection
+-   timestamps on posts and comments
+    > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > > >
 
 ## Initialize Angular App
 
