@@ -33,7 +33,7 @@ import { UserInfo } from '../types/userInfo';
 export class MyPageComponent implements OnInit {
   isLoading: boolean = true;
   userId: string = '';
-  fb = inject(NonNullableFormBuilder);
+  fb = inject(FormBuilder);
 
   userinfo: UserInfo | undefined = undefined;
   constructor(
@@ -69,13 +69,16 @@ export class MyPageComponent implements OnInit {
 
   onSubmitPassword(): void {
     const { newPassword, rePass } = this.passwordForm.value;
+
     if (newPassword !== rePass) {
       this.passwordSignal.set('passwords must match');
       return;
-    } else if (newPassword?.length! < 5) {
+    }
+    if (newPassword?.trim().length! < 5) {
       this.passwordSignal.set('password must be at least 5 characters');
       return;
     }
+    this.passwordSignal.set('');
     this.userService.updatePassword(newPassword!);
     this.passwordForm.reset();
   }

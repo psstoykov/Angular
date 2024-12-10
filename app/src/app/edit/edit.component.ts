@@ -1,6 +1,6 @@
 import { Component, input, OnInit, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { ApiService } from '../api.service';
 import { Post } from '../types/posts';
@@ -16,10 +16,10 @@ import { LoaderComponent } from '../loader/loader.component';
 export class EditComponent implements OnInit {
   isLoading: boolean = true;
   pageId = input.required<string>(); //rouing using input signal
-  posts = signal<Post[]>([]);
+  posts = signal<Post | null>(null);
   constructor(
-    private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
+    private userService: UserService,
     private router: Router
   ) {}
   edit(form: NgForm) {
@@ -35,9 +35,11 @@ export class EditComponent implements OnInit {
     this.router.navigate(['gallery', this.pageId()]);
   }
   ngOnInit(): void {
+    const currentUserId = this.userService.currentUserSignal()?.uid;
     const obs = this.apiService.getPostById(this.pageId());
+
     obs.subscribe((data) => {
-      this.posts.update((prev) => [...prev, data.data() as Post]);
+      this.posts.set(data.data() as Post);
     });
 
     this.isLoading = false;

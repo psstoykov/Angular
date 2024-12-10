@@ -46,20 +46,6 @@
           <input
             type="password"
             class="input"
-            placeholder="repeat Password"
-            formControlName="rePass"
-            [class.invalid]="
-              passwordForm.get('rePass')?.invalid &&
-              (passwordForm.get('rePass')?.dirty ||
-                passwordForm.get('rePass')?.touched)
-            "
-          />
-        </div>
-        <div class="field">
-          <label class="label"></label>
-          <input
-            type="password"
-            class="input"
             placeholder="new Password"
             formControlName="newPassword"
             [class.invalid]="
@@ -69,10 +55,24 @@
             "
           />
         </div>
+        <div class="field">
+          <label class="label"></label>
+          <input
+            type="password"
+            class="input"
+            placeholder="repeat Password"
+            formControlName="rePass"
+            [class.invalid]="
+              passwordForm.get('rePass')?.invalid &&
+              (passwordForm.get('rePass')?.dirty ||
+                passwordForm.get('rePass')?.touched)
+            "
+          />
+        </div>
         <div class="submit">
           <button type="submit" class="button">Update</button>
         </div>
-        @if(passwordSignal()) {
+        @if (passwordSignal()) {
         <div class="error">
           {{ passwordSignal() }}
         </div>

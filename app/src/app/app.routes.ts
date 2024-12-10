@@ -10,9 +10,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EditComponent } from './edit/edit.component';
 import { GuestGuardService } from './guest-guard.service';
 import { MyPageComponent } from './my-page/my-page.component';
+import { OwnerGuardService } from './owner-guard.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  // { path: '/', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
   //User Routes
@@ -47,6 +49,8 @@ export const routes: Routes = [
     path: 'gallery/:pageId/edit',
     component: EditComponent,
     canActivate: [AuthGuardService],
+
+    //TODO implement owner guard
   },
   //my  Page
   {
@@ -54,10 +58,7 @@ export const routes: Routes = [
     component: MyPageComponent,
     canActivate: [AuthGuardService],
   },
-  // {
-  //   path: 'myPage/:pageId',
-  //   component: MyPostDetailsComponent,
-  // },
+
   {
     path: 'myPage/:pageId',
     redirectTo: '/gallery/:pageId',
@@ -68,6 +69,6 @@ export const routes: Routes = [
     redirectTo: 'gallery/:pageId',
     pathMatch: 'full',
   },
-  //redirect any random url back to home page
+  //redirect any random url to Page not found
   { path: '**', component: NotFoundComponent },
 ];
