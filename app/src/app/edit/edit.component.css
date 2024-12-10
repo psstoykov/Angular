@@ -35,3 +35,6 @@ button {
   padding: 5px;
   border-radius: 10px;
 }
+.error {
+  color: red;
+}

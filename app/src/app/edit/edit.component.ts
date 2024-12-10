@@ -6,6 +6,7 @@ import { ApiService } from '../api.service';
 import { Post } from '../types/posts';
 import { LoaderComponent } from '../loader/loader.component';
 import { User } from '../types/user';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-edit',
@@ -19,14 +20,25 @@ export class EditComponent implements OnInit {
   route = inject(ActivatedRoute);
   isLoading: boolean = true;
   pageId = input.required<string>(); //rouing using input signal
-  posts!: Post;
+  post!: Post;
   constructor(
     private apiService: ApiService,
-    private userService: UserService,
+
     private router: Router
   ) {}
+
+  error = signal<string>('');
   edit(form: NgForm) {
     const { title, imageUrl, description } = form.value;
+    if (form.invalid) {
+      if (!title.trim() || !imageUrl.trim() || !description.trim()) {
+        this.error.set('all fields are required');
+        return;
+      }
+      this.error.set('form is invalid');
+      return;
+    }
+
     this.apiService.updatePost(
       this.pageId(),
       title.trim(),
@@ -38,13 +50,12 @@ export class EditComponent implements OnInit {
   }
   ngOnInit(): void {
     this.user = this.route.snapshot.data['user'];
-    const currentUserId = this.userService.currentUserSignal()?.uid;
     const obs = this.apiService.getPostById(this.pageId());
 
     obs.subscribe((data) => {
-      this.posts = data.data() as Post;
+      this.post = data.data() as Post;
+      console.log('hereeee');
     });
-
     this.isLoading = false;
   }
 }
