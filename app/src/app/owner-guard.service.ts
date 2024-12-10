@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  GuardResult,
-  MaybeAsync,
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
@@ -23,13 +21,14 @@ export class OwnerGuardService implements CanActivate {
     private router: Router,
     private userService: UserService
   ) {}
-
+  //
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
+    //get the param via the build in method of canActivate
     const postId = route.params['pageId'];
-
+    //combine 2 streams of data to be processed paralel with the combineLatest
     return combineLatest({
       user: this.userService.user$,
       post: this.apiService.getPostById(postId),

@@ -1,12 +1,11 @@
 import { Component, inject, input, OnInit, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { UserService } from '../user/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { ApiService } from '../api.service';
 import { Post } from '../types/posts';
 import { LoaderComponent } from '../loader/loader.component';
 import { User } from '../types/user';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-edit',
@@ -54,7 +53,6 @@ export class EditComponent implements OnInit {
 
     obs.subscribe((data) => {
       this.post = data.data() as Post;
-      console.log('hereeee');
     });
     this.isLoading = false;
   }

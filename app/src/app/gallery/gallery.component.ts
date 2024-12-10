@@ -26,8 +26,6 @@ export class GalleryComponent implements OnInit {
   result: Post[] = [];
   sq = signal<string>('');
 
-  // postId = input.required<string>(); //input signal for dynamic routing >>>postId is url param
-
   constructor(private apiService: ApiService, private firestore: Auth) {}
   searchFunc(event: Event) {
     this.posts.set(this.result);

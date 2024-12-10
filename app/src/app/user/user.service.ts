@@ -88,7 +88,6 @@ export class UserService {
             this.currentUserSignal.set({ uid, username, email } as User);
           } else {
             // User is signed out
-            // ...
           }
         });
       })

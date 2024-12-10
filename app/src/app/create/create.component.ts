@@ -23,17 +23,16 @@ export class CreateComponent {
 
   error = signal<string>('');
   create(form: NgForm) {
+    const { title, imageUrl, description } = form.value;
     if (form.invalid) {
       this.error.set('form is invalid');
-
+      if (!title.trim() || !imageUrl.trim() || !description.trim()) {
+        this.error.set('all fields are required');
+        return;
+      }
       return;
     }
-    const { title, imageUrl, description } = form.value;
     const createdAt = Timestamp.now();
-    if (!title.trim() || !imageUrl.trim() || !description.trim()) {
-      this.error.set('all fields are required');
-      return;
-    }
     //get userId
     const ownerId = this.auth.currentUser?.uid!;
     const ownerUsername = this.auth.currentUser?.displayName;

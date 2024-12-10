@@ -6,11 +6,11 @@ import { filter, map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+//guard service for guest users
 export class GuestGuardService {
   constructor(private userService: UserService, private router: Router) {}
   canActivate(): Observable<boolean> {
     return this.userService.user$.pipe(
-      //filter for user !== undefiend
       filter((currentUser) => currentUser !== undefined),
       map((currentUser) => {
         if (!currentUser) {

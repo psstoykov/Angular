@@ -1,10 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { UserService } from './user/user.service';
-import { LoaderComponent } from './loader/loader.component';
+
 import { Auth } from '@angular/fire/auth';
 
 @Component({
@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
             username: user.displayName!,
             uid: this.auth.currentUser?.uid,
           });
-          // console.log(this.userService.currentUserSignal());
         } else {
           this.userService.currentUserSignal.set(null);
         }

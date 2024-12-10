@@ -52,8 +52,6 @@ export class ApiService {
     const q = query(
       collection(this.firestore, 'photographs'),
       where('ownerId', '==', uid)
-
-      // orderBy('ownerId'),
     );
 
     const promise = getDocs(q);
