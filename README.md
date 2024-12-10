@@ -22,7 +22,7 @@
 -   timestamps on posts and comments
 -   guest users can browse the gallery, read comments, search in the gallery and see post details
 -   guest users can register and login with email and password
--   logged in users can create new posts and comment on all other posts.
+-   logged in users can create new posts and comment on all posts.
 -   logged in users can browse the gallery, read and write comments, search in the gallery and see post details
 -   logged in users can edit and delete their own posts
 -   logged in users can update their profile name on /My Page

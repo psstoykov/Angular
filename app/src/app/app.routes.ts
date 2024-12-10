@@ -10,6 +10,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EditComponent } from './edit/edit.component';
 import { GuestGuardService } from './guest-guard.service';
 import { MyPageComponent } from './my-page/my-page.component';
+import { PostGuardService } from './post-guard.service';
+import { OwnerGuardService } from './owner-guard.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,7 +36,7 @@ export const routes: Routes = [
   },
   {
     path: 'gallery/:postId',
-
+    canMatch: [PostGuardService],
     component: DetailsComponent,
     pathMatch: 'full',
   },
@@ -48,8 +50,11 @@ export const routes: Routes = [
   {
     //add the owner-guard service
     path: 'gallery/:pageId/edit',
+    canActivate: [AuthGuardService, OwnerGuardService],
+    canMatch: [PostGuardService],
+
     component: EditComponent,
-    canActivate: [AuthGuardService],
+
     pathMatch: 'full',
 
     //TODO implement owner guard

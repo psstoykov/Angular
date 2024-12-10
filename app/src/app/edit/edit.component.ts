@@ -38,7 +38,6 @@ export class EditComponent implements OnInit {
   }
   ngOnInit(): void {
     this.user = this.route.snapshot.data['user'];
-    console.log(this.pageId);
     const currentUserId = this.userService.currentUserSignal()?.uid;
     const obs = this.apiService.getPostById(this.pageId());
 
