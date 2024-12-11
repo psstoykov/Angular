@@ -26,7 +26,7 @@
         id="imageUrl"
         placeholder="imageUrl"
         [(ngModel)]="post.imageUrl"
-        #inputImageUrl="ngModel"
+        #imageUrl="ngModel"
         required
       />
       <label for="description"></label>
@@ -36,9 +36,8 @@
         id="description"
         placeholder="description"
         [(ngModel)]="post.description"
-        #inputDescription="ngModel"
+        #description="ngModel"
         required
-        value=""
       >
       </textarea>
       <button>Confirm</button>
